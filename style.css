@@ -1,0 +1,286 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit;
+}
+
+html {
+    font-size: 62.5%;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 300;
+    color: #ffffffa8;
+    line-height: 1.9;
+    background-color: #1F2532;
+
+}
+
+img {
+    transition: filter 0.5s;
+}
+
+.section {
+    padding: 9rem 3rem;
+    transition: transform 1s, opacity 1s;
+}
+
+.nav {
+    display: flex;
+    box-shadow: 0 0 10px rgba(0, 0, 0, .09);
+    justify-content: space-between;
+    align-items: center;
+    height: 9rem;
+    width: 100%;
+    padding: 0 6rem;
+    z-index: 100;
+}
+
+.nav.sticky {
+    position: fixed;
+    background-color: rgba(31, 37, 50, 0.95);
+}
+
+.nav__logo {
+    height: 4.5rem;
+    transition: all 0.3s;
+}
+
+.nav__links {
+    display: flex;
+    align-items: center;
+    list-style: none;
+}
+
+.nav__links li a:hover {
+    color: #860000;
+}
+
+.nav__item {
+    margin-left: 4rem;
+}
+
+.nav__link:link,
+.nav__link:visited {
+    font-size: 1.7rem;
+    font-weight: 400;
+    color: inherit;
+    text-decoration: none;
+    display: block;
+    transition: 0.3s;
+}
+
+.header {
+    padding: 0;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.header-flex {
+    display: flex;
+    flex-direction: row;
+    width: 100vh;
+    justify-content: left;
+    align-items: start;
+    margin-top: 125px;
+}
+
+.github-img-container {
+    text-align: center;
+    align-self: center;
+    width: 30px;
+    height: 30px;
+    margin-left: 62px;
+}
+
+#github-link {
+    text-decoration: none;
+    color: #fff;
+}
+
+#github-link img {
+    width: 30px;
+    height: 30px;
+    transition: filter 0.3s ease;
+}
+
+#github-link img:hover {
+    filter: invert(10%) sepia(89%) saturate(3711%) hue-rotate(353deg) brightness(85%) contrast(113%);
+}
+
+.linkedin-img-container {
+    text-align: center;
+    align-self: center;
+    width: 30px;
+    height: 30px;
+    margin-left: 10px;
+}
+
+#linkedin-link {
+    width: 30px;
+    height: 30px;
+    text-decoration: none;
+    display: inline-block;
+}
+
+#linkedin-link img {
+    width: 30px;
+    height: 30px;
+    transition: filter 0.3s ease;
+}
+
+#linkedin-link img:hover {
+    filter: invert(10%) sepia(89%) saturate(3711%) hue-rotate(353deg) brightness(85%) contrast(113%);
+}
+
+.header-img {
+    border-radius: 100%;
+    width: 25%;
+}
+
+.desc-flex {
+    font-size: 18px;
+    font-weight: 500;
+    margin-top: 20px;
+    justify-content: center;
+    margin-left: 80px;
+    align-self: center;
+}
+
+.header-flex-name {
+    background-color: #1F2532;
+    display: flex;
+    flex-direction: row;
+    width: 100vh;
+    margin-top: 10px;
+    justify-content: left;
+}
+
+.header-flex-name h1 {
+    font-size: 22px;
+}
+
+.tech-stack {
+    height: 100vh;
+}
+
+h2 {
+    text-align: center;
+    font-size: 2.5rem;
+}
+
+hr {
+    border: 0;
+    height: 1px;
+    background: #333;
+    background-image: linear-gradient(to right, #333, #ccc, #333);
+}
+
+.html-img {
+    width: 84px;
+    border-radius: 10px;
+}
+
+.css-img {
+    width: 84px;
+    border-radius: 10px;
+}
+
+.js-img {
+    width: 84px;
+    border-radius: 10px;
+}
+
+.node-js-img {
+    width: 84px;
+}
+
+.react-img {
+    width: 84px;
+}
+
+.next-js-img {
+    width: 84px;
+}
+
+.tech-stack-grid {
+    display: grid;
+    grid-template-columns: repeat(6, 16%);
+    justify-items: center;
+    margin-top: 20px;
+}
+
+.html-img-grid {
+    grid-column-start: 1;
+}
+
+.css-img-grid {
+    grid-column-start: 2;
+}
+
+.js-img-grid {
+    grid-column-start: 3;
+}
+
+.node-js-img-grid {
+    grid-column-start: 4;
+}
+
+.react-img-grid {
+    grid-column-start: 5;
+}
+
+.next-js-img-grid {
+    grid-column-start: 6;
+}
+
+/* Projects section */
+.projects {
+    height: 100vh;
+}
+
+/* Contact section */
+.container {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    padding: 2vw 4vw;
+    width: 90%;
+    max-width: 600px;
+    border-radius: 10px;
+}
+
+form input,
+form textarea {
+    background-color: #f6f6f6;
+    border: 0;
+    margin: 10px 0;
+    padding: 20px;
+    outline: none;
+    font-size: 16px;
+    font-family: inherit;
+}
+
+form button {
+    padding: 15px;
+    background-color: #990000;
+    color: #fff;
+    font-size: 18px;
+    border: 0;
+    outline: none;
+    cursor: pointer;
+    width: 150px;
+    margin: 20px auto 0;
+    border-radius: 30px;
+}
