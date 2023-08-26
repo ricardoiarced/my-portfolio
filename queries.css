@@ -1,0 +1,265 @@
+@media (max-width: 84em) {
+    .hero-flex {
+        margin: 13rem 0 0 0;
+    }
+}
+
+@media (max-width: 75em) {
+    html {
+        font-size: 56.25%;
+    }
+
+    .nav__item {
+        margin-left: 3.2rem;
+    }
+
+    .hero-flex {
+        gap: 8rem;
+    }
+
+    .hero-text h1 {
+        font-size: 4.7rem;
+    }
+
+    .hero-img {
+        width: 34rem;
+        height: 25rem;
+    }
+
+    footer {
+        padding: 4.1rem 2.2rem;
+    }
+
+
+}
+
+@media (max-width: 63em) {
+    html {
+        font-size: 50%;
+    }
+
+    .header {
+        grid-template-columns: 1fr;
+        padding: 0;
+        gap: 6.4rem
+    }
+
+    /* Mobile navigation */
+    .btn-mobile-nav {
+        display: block;
+        margin: 4.8rem;
+    }
+
+    .nav__links {
+        background-color: rgba(0, 0, 0, 0.97);
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+        transform: translateX(100%);
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        gap: 4.8rem;
+        transition: all 0.5s ease-in;
+        /* display: none; */
+        opacity: 0;
+        pointer-events: none;
+        visibility: hidden;
+    }
+
+    .nav-open .nav__links {
+        opacity: 1;
+        pointer-events: auto;
+        visibility: visible;
+        transform: translateX(0);
+    }
+
+    .nav-open .icon-mobile-nav[name="close-outline"] {
+        display: block;
+    }
+
+    .nav-open .icon-mobile-nav[name="menu-outline"] {
+        display: none;
+    }
+
+    .nav__link:link,
+    .nav__link:visited {
+        font-size: 3rem;
+    }
+
+}
+
+@media (max-width: 50em) {
+    .hero-flex {
+        display: flex;
+        flex-direction: column;
+        gap: 0;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+    }
+
+    .hero-img {
+        align-self: center;
+        width: 30rem;
+        height: 21rem;
+    }
+
+    .hero-information {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+    }
+
+    .hero-text h1 {
+        align-self: center;
+    }
+
+    .hero-text p {
+        align-self: center;
+    }
+
+    .hero-socials {
+        background-color: #1F2532;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        width: 100%;
+        margin: 2.5rem 0;
+        gap: 1.3rem;
+    }
+
+    .html-img {
+        width: 6rem;
+        border-radius: 0.8rem;
+    }
+
+    .css-img {
+        width: 6rem;
+        border-radius: 0.8rem;
+    }
+
+    .js-img {
+        width: 6rem;
+        border-radius: 0.8rem;
+    }
+
+    .node-js-img {
+        width: 6rem;
+    }
+
+    .react-img {
+        width: 6rem;
+    }
+
+    .next-js-img {
+        width: 6rem;
+    }
+
+    .container {
+        margin: 0 0 0 0;
+    }
+
+    form button {
+        width: 15rem;
+        border-radius: 2.5rem;
+    }
+
+    footer {
+        padding: 4.625rem 1.25rem;
+        background-color: #ffffffa8;
+    }
+
+    .footer-flex {
+        height: 3.75rem;
+    }
+
+    footer h2 {
+        font-size: 1.6rem;
+    }
+
+    .footer-mail {
+        gap: 1.75rem;
+    }
+
+    footer img {
+        width: 3rem;
+        height: 3rem;
+        margin-left: 2rem;
+    }
+
+    footer p {
+        font-size: 1.4rem;
+    }
+}
+
+@media (max-width: 30em) {
+
+    .hero-img {
+        width: 26rem;
+        height: 17rem;
+        border-radius: 100%;
+    }
+
+    .hero-text h1 {
+        font-size: 4rem;
+    }
+
+    .hero-text p {
+        font-size: 1.25rem;
+    }
+
+    .html-img {
+        width: 4rem;
+        border-radius: 0.6rem;
+    }
+
+    .css-img {
+        width: 4rem;
+        border-radius: 0.6rem;
+    }
+
+    .js-img {
+        width: 4rem;
+        border-radius: 0.6rem;
+    }
+
+    .node-js-img {
+        width: 4rem;
+    }
+
+    .react-img {
+        width: 4rem;
+    }
+
+    .next-js-img {
+        width: 4rem;
+    }
+
+    form button {
+        width: 12rem;
+        border-radius: 2.2rem;
+    }
+
+    footer h2 {
+        font-size: 1.2rem;
+    }
+
+    .footer-mail {
+        gap: 0.6rem;
+    }
+
+    footer img {
+        width: 2rem;
+        height: 2rem;
+        margin-left: 1rem;
+    }
+
+    footer p {
+        font-size: 1rem;
+    }
+}
