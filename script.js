@@ -1,4 +1,5 @@
 'use strict';
+import 'core-js/actual';
 
 // Mobile navigation
 function setupMobileNavigation() {
