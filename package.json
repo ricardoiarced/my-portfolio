@@ -18,5 +18,8 @@
   "homepage": "https://github.com/Rakiit/my-portfolio#readme",
   "devDependencies": {
     "parcel": "^2.9.3"
+  },
+  "dependencies": {
+    "core-js": "^3.32.1"
   }
 }
