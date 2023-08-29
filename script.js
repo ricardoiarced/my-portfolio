@@ -1,3 +1,5 @@
+'use strict';
+
 // Mobile navigation
 function setupMobileNavigation() {
     const btnNavEl = document.querySelector('.btn-mobile-nav');
@@ -66,7 +68,6 @@ function setupPageNavigation() {
 
     headerObserver.observe(header);
 }
-import 'core-js/stable';
 
 setupMobileNavigation();
 setupPageNavigation();
