@@ -16,8 +16,5 @@
   "bugs": {
     "url": "https://github.com/ricardoiarced/my-portfolio/issues"
   },
-  "homepage": "https://github.com/ricardoiarced/my-portfolio#readme",
-  "devDependencies": {
-    "parcel": "^2.9.3"
-  }
+  "homepage": "https://github.com/ricardoiarced/my-portfolio#readme"
 }
