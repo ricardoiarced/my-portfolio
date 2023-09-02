@@ -13,7 +13,7 @@
     <script defer src="https://smtpjs.com/v3/smtp.js"></script>
     <script defer src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
-    <script defer src="script.js"></script>
+    <script defer type="module" src="script.js"></script>
 </head>
 
 <body>
@@ -142,7 +142,7 @@
         <h2>Contact</h2>
         <hr />
         <div class="container">
-            <form onsubmit="sendEmail(); reset(); return false;">
+            <form action="#" class="form-contact">
                 <input type="text" id="name" placeholder="Your name">
                 <input type="email" id="email" placeholder="Email">
                 <textarea id="message" rows="4" placeholder="Your message"></textarea>

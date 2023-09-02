@@ -2,20 +2,21 @@
   "name": "my-portfolio",
   "version": "1.0.0",
   "description": "",
-  "default": "index.html",
+  "source": "index.html",
   "scripts": {
-    "build": "parcel build index.html --no-scope-hoist"
+    "start": "parcel",
+    "build": "parcel build"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Rakiit/my-portfolio.git"
+    "url": "git+https://github.com/ricardoiarced/my-portfolio.git"
   },
   "author": "Ricardo Arce",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/Rakiit/my-portfolio/issues"
+    "url": "https://github.com/ricardoiarced/my-portfolio/issues"
   },
-  "homepage": "https://github.com/Rakiit/my-portfolio#readme",
+  "homepage": "https://github.com/ricardoiarced/my-portfolio#readme",
   "devDependencies": {
     "parcel": "^2.9.3"
   }

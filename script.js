@@ -12,30 +12,37 @@ function setupMobileNavigation() {
 
 // Send email
 function sendEmail() {
-    const name = document.getElementById('name').value;
-    const email = document.getElementById('email').value;
-    const formmessage = document.getElementById('message').value;
-    const body = `
-Name: ${name} <br />
-Email: ${email} <br />
-Message: ${formmessage}
-    `;
+    const submit = document.getElementsByClassName('form-contact')[0];
 
-    Email.send({
-        SecureToken: '39d79899-0a51-41ef-b5d7-65ebd7f63a72',
-        To: 'ricardoiarced@gmail.com',
-        From: 'ricardoiarced@gmail.com',
-        Subject: `Message from ${name} in your portfolio`,
-        Body: body
-    }).then(
-        message => {
-            if (String(message) === 'OK') {
-                swal('Your message has been sent successfully!', 'I\'m going to send you a response back', 'success');
-            } else {
-                swal('Something went wrong', 'Try again later', 'error');
+    submit.addEventListener('submit', function (e) {
+        e.preventDefault();
+
+        const name = document.getElementById('name').value;
+        const email = document.getElementById('email').value;
+        const formmessage = document.getElementById('message').value;
+
+        const body = `
+        Name: ${name} <br />
+        Email: ${email} <br />
+        Message: ${formmessage}
+            `;
+
+        Email.send({
+            SecureToken: '39d79899-0a51-41ef-b5d7-65ebd7f63a72',
+            To: 'ricardoiarced@gmail.com',
+            From: 'ricardoiarced@gmail.com',
+            Subject: `Message from ${name} in your portfolio`,
+            Body: body
+        }).then(
+            message => {
+                if (String(message) === 'OK') {
+                    swal('Your message has been sent successfully!', 'I\'m going to send you a response back', 'success');
+                } else {
+                    swal('Something went wrong', 'Try again later', 'error');
+                }
             }
-        }
-    );
+        );
+    })
 }
 
 // Page navigation
@@ -71,3 +78,4 @@ function setupPageNavigation() {
 
 setupMobileNavigation();
 setupPageNavigation();
+sendEmail();
