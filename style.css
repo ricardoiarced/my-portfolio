@@ -222,6 +222,46 @@ hr {
     background-image: linear-gradient(to right, #333, #ccc, #333);
 }
 
+.work-experience-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 3rem;
+  }
+  
+  .job-card {
+    max-width: 90rem;
+    background-color: #1F2532;
+    border-radius: 1rem;
+    padding: 4rem 5rem;
+    box-shadow: 0 0 1rem rgba(0, 0, 0, 0.2);
+  }
+  
+  .job-card h3 {
+    font-size: 2.8rem;
+    margin-bottom: 1.5rem;
+    text-align: center;
+  }
+  
+  .job-duration {
+    font-size: 1.8rem;
+    color: #ffffffa8;
+    margin-bottom: 2.5rem;
+    text-align: center;
+  }
+  
+  .job-responsibilities {
+    list-style-type: disc;
+    padding-left: 2.5rem;
+    font-size: 1.6rem;
+    line-height: 2.6rem;
+    color: #ffffffa8;
+  }
+  
+  .job-responsibilities li {
+    margin-bottom: 1.5rem;
+  }
+  
 .python-img {
     width: 8.4rem;
     border-radius: 1rem;
@@ -275,9 +315,6 @@ hr {
 }
 
 /* Projects section */
-.projects {
-   /* height: 100vh; */
-}
 
 .projects-list {
     display: grid;
