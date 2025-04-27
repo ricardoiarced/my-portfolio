@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>My Portfolio</title>
+    <title>Ricardo - Software Engineer</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
@@ -33,9 +33,6 @@
                     <li class="nav__item">
                         <a class="nav__link" href="#section--2">Projects</a>
                     </li>
-                    <li class="nav__item">
-                        <a class="nav__link" href="#section--3">Contact</a>
-                    </li>
                 </ul>
                 <button class="btn-mobile-nav">
                     <img class="icon-mobile-nav" src="./img/menu.svg" name="menu-outline" alt="Menu" />
@@ -43,55 +40,71 @@
                 </button>
             </div>
         </nav>
-        <div class="hero-flex">
-            <img class="hero-img" src="img/me-on-red.png" alt="Me" />
-            <div class="hero-information">
-                <div class="hero-text">
-                    <h1>Full-Stack Developer</h1>
-                    <p>Sharing value all around the world, always working with a smile!
-                    </p>
-                </div>
-                <div class="hero-socials">
-                    <div class="github-img-container">
-                        <a id="github-link" href="https://github.com/ricardoiarced" target="_blank">
-                            <img src="./img/github-img.svg" alt="GitHub profile">
-                        </a>
+        <main>
+            <div class="hero-flex">
+                <img class="hero-img" src="img/me-on-red.png" alt="Me" />
+                <div class="hero-information">
+                    <div class="hero-text">
+                        <h1>Full-Stack Developer</h1>
+                        <p>Sharing value all around the world, always working with a smile!
+                        </p>
                     </div>
-                    <div class="linkedin-img-container">
-                        <a id="linkedin-link" href="https://www.linkedin.com/in/ricardo-irvin-arce-diaz/"
-                            target="_blank">
-                            <img src="./img/linkedin-img.svg" alt="Linkedin profile">
-                        </a>
+                    <div class="hero-socials">
+                        <div class="github-img-container">
+                            <a id="github-link" href="https://github.com/ricardoiarced" target="_blank">
+                                <img src="./img/github-img.svg" alt="GitHub profile">
+                            </a>
+                        </div>
+                        <div class="linkedin-img-container">
+                            <a id="linkedin-link" href="https://www.linkedin.com/in/ricardo-irvin-arce-diaz/"
+                                target="_blank">
+                                <img src="./img/linkedin-img.svg" alt="Linkedin profile">
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
+        </main>
     </header>
-    <section class="tech-stack section" id="section--1">
+    <section class="work-experience section" id="section--1">
+        <h2>Work Experience</h2>
+        <hr />
+        <div class="experience-container">
+            <div class="job">
+                <h3>Software Engineer - Beracah Médica</h3>
+                <p><strong>Duration:</strong> October 2023 - Present</p>
+                <ul class="experience-list">
+                    <li>Customized Odoo's native checkout process to align with the company's operational model and compliance requirements.</li>
+                    <li>Contributed to website redesign initiatives, improving user experience and brand consistency based on the owner's vision.</li>
+                    <li>Developed a custom Odoo module to automate field updates from spreadsheet data accuracy and saving manual effort.</li>
+                    <li>Optimized existing workflows and created new Odoo Enterprise, managing domain redirection and implementing 301 redirects to preserve SEO rankings and ensure a seamless user transition.</li>
+                    <li>Built a cron job to automatically update Magento 2 product prices based on real-time supplier currency fluctuations, improving pricing accuracy and operational responsiveness.</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+    <section class="tech-stack section" id="section--2">
         <h2>Tech Stack</h2>
         <hr />
         <div class="tech-stack-grid">
+            <div class="python-img-grid">
+                <img class="python-img" src="img/python-img.svg" alt="Python img" />
+            </div>
+            <div class="js-img-grid">
+                <img class="js-img" src="img/js-img.svg" alt="Js img" />
+            </div>
             <div class="html-img-grid">
                 <img class="html-img" src="img/html-img.svg" alt="HTML img" />
             </div>
             <div class="css-img-grid">
                 <img class="css-img" src="img/css-img.svg" alt="CSS img" />
             </div>
-            <div class="js-img-grid">
-                <img class="js-img" src="img/js-img.svg" alt="Js img" />
-            </div>
-            <div class="node-js-img-grid">
-                <img class="node-js-img" src="img/node-js-img.svg" alt="Node js img" />
-            </div>
-            <div class="react-img-grid">
-                <img class="react-img" src="img/react-img.svg" alt="React img" />
-            </div>
-            <div class="next-js-img-grid">
-                <img class="next-js-img" src="img/next-img.svg" alt="Next js img" />
+            <div class="postgresql-img-grid">
+                <img class="postgresql-img" src="img/postgresql-img.svg" alt="Postgresql img" />
             </div>
         </div>
     </section>
-    <section class="projects section" id="section--2">
+    <section class="projects section" id="section--3">
         <h2>Projects</h2>
         <hr />
         <div class="projects-flex">
@@ -136,18 +149,6 @@
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
-    <section class="contact section" id="section--3">
-        <h2>Contact</h2>
-        <hr />
-        <div class="container">
-            <form action="#" class="form-contact">
-                <input type="text" id="name" placeholder="Your name">
-                <input type="email" id="email" placeholder="Email">
-                <textarea id="message" rows="4" placeholder="Your message"></textarea>
-                <button type="submit">Send</button>
-            </form>
         </div>
     </section>
     <footer>

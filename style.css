@@ -113,7 +113,6 @@ img {
 /* Hero */
 .header {
     padding: 0;
-    height: 100vh;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -211,10 +210,6 @@ img {
     gap: 1.3rem;
 }
 
-.tech-stack {
-    height: 100vh;
-}
-
 h2 {
     text-align: center;
     font-size: 2.8em;
@@ -225,6 +220,11 @@ hr {
     height: 0.1rem;
     background: #333;
     background-image: linear-gradient(to right, #333, #ccc, #333);
+}
+
+.python-img {
+    width: 8.4rem;
+    border-radius: 1rem;
 }
 
 .html-img {
@@ -242,52 +242,41 @@ hr {
     border-radius: 1rem;
 }
 
-.node-js-img {
+.postgresql-img {
     width: 8.4rem;
-}
-
-.react-img {
-    width: 8.4rem;
-}
-
-.next-js-img {
-    width: 8.4rem;
+    border-radius: 1rem;
 }
 
 .tech-stack-grid {
     display: grid;
-    grid-template-columns: repeat(6, 16.67%);
+    grid-template-columns: repeat(5, 20.00%);
     justify-items: center;
     margin-top: 2.5rem;
 }
 
-.html-img-grid {
+.python-img-grid {
     grid-column-start: 1;
 }
 
-.css-img-grid {
-    grid-column-start: 2;
-}
-
-.js-img-grid {
+.html-img-grid {
     grid-column-start: 3;
 }
 
-.node-js-img-grid {
+.css-img-grid {
     grid-column-start: 4;
 }
 
-.react-img-grid {
-    grid-column-start: 5;
+.js-img-grid {
+    grid-column-start: 2;
 }
 
-.next-js-img-grid {
-    grid-column-start: 6;
+.postgresql-img-grid {
+    grid-column-start: 5;
 }
 
 /* Projects section */
 .projects {
-    height: 100vh;
+   /* height: 100vh; */
 }
 
 .projects-list {
@@ -369,52 +358,6 @@ hr {
 
 .project:hover .layer {
     height: 100%;
-}
-
-/* Contact section */
-.contact {
-    height: 90vh;
-}
-
-.container {
-    width: 100%;
-    height: 57vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-form {
-    display: flex;
-    flex-direction: column;
-    padding: 2vw 4vw;
-    width: 90%;
-    max-width: 60rem;
-    border-radius: 1rem;
-}
-
-form input,
-form textarea {
-    background-color: #f6f6f6;
-    border: 0;
-    margin: 1rem 0;
-    padding: 2rem;
-    outline: none;
-    font-size: 1.6rem;
-    font-family: inherit;
-}
-
-form button {
-    padding: 1.5rem;
-    background-color: #990000;
-    color: #f6f6f6;
-    font-size: 1.8rem;
-    border: 0;
-    outline: none;
-    cursor: pointer;
-    width: 15rem;
-    margin: 2rem auto 0;
-    border-radius: 3rem;
 }
 
 footer {

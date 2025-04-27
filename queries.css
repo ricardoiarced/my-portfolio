@@ -227,6 +227,39 @@
         gap: 1.3rem;
     }
 
+    .experience-container {
+        display: flex;
+        flex-direction: column;
+        gap: 4rem;
+        margin-top: 3rem;
+      }
+      
+      .job h3 {
+        font-size: 2rem;
+        margin-bottom: 1rem;
+      }
+      
+      .job p {
+        font-size: 1.6rem;
+        margin-bottom: 2rem;
+      }
+      
+      .experience-list {
+        list-style-type: disc;
+        padding-left: 2rem;
+        font-size: 1.6rem;
+        line-height: 1.7;
+      }
+      
+      .experience-list li {
+        margin-bottom: 1rem;
+      }      
+
+    .python-img {
+        width: 6rem;
+        border-radius: 0.8rem;
+    }
+
     .html-img {
         width: 6rem;
         border-radius: 0.8rem;
@@ -242,16 +275,9 @@
         border-radius: 0.8rem;
     }
 
-    .node-js-img {
+    .postgresql-img {
         width: 6rem;
-    }
-
-    .react-img {
-        width: 6rem;
-    }
-
-    .next-js-img {
-        width: 6rem;
+        border-radius: 0.8rem;
     }
 
     .container {
@@ -332,6 +358,11 @@
         font-size: 1.25rem;
     }
 
+    .python-img {
+        width: 4rem;
+        border-radius: 0.6rem;
+    }
+
     .html-img {
         width: 4rem;
         border-radius: 0.6rem;
@@ -347,16 +378,9 @@
         border-radius: 0.6rem;
     }
 
-    .node-js-img {
+    .postgresql-img {
         width: 4rem;
-    }
-
-    .react-img {
-        width: 4rem;
-    }
-
-    .next-js-img {
-        width: 4rem;
+        border-radius: 0.6rem;
     }
 
     form button {
