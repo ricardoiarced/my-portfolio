@@ -46,9 +46,19 @@ img {
     align-items: center;
 }
 
-.nav.sticky {
+.nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 9rem;
+    width: 100%;
+    font-size: 1.7rem;
+    z-index: 1000;
     position: fixed;
-    background-color: rgba(31, 37, 50, 0.95);
+    top: 0;
+    left: 0;
+    background-color: rgba(31, 37, 50, 0.95); /* Semi-transparent background */
+    box-shadow: 0 0 1rem rgba(0, 0, 0, .09);
 }
 
 .name-container {
@@ -234,20 +244,27 @@ hr {
     background-color: #1F2532;
     border-radius: 1rem;
     padding: 4rem 5rem;
-    box-shadow: 0 0 1rem rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s ease, transform 0.3s ease;
+  }
+  
+  /* Hover effect */
+  .job-card:hover {
+    box-shadow: 0 0 2rem rgba(0, 0, 0, 0.4);
+    background-color: #860000; /* Light red hover */
+    transform: translateY(-5px); /* Slight lift effect */
   }
   
   .job-card h3 {
     font-size: 2.8rem;
     margin-bottom: 1.5rem;
-    text-align: center;
+    text-align: left;
   }
   
   .job-duration {
     font-size: 1.8rem;
     color: #ffffffa8;
     margin-bottom: 2.5rem;
-    text-align: center;
+    text-align: match-parent;
   }
   
   .job-responsibilities {
@@ -257,11 +274,43 @@ hr {
     line-height: 2.6rem;
     color: #ffffffa8;
   }
-  
+
   .job-responsibilities li {
     margin-bottom: 1.5rem;
   }
+
+  .technologies-used {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-top: 2rem;
+    list-style: none;
+    padding: 0;
+    justify-content: left; /* Center if you want */
+  }
   
+  .technologies-used li {
+    margin: 0;
+  }
+  
+  .technology {
+    background-color: rgba(255, 255, 255, 0.1); /* Light transparent white */
+    color: #ffffff;
+    padding: 0.6rem 1.2rem;
+    font-size: 1.4rem;
+    border-radius: 9999px; /* Full pill shape */
+    font-weight: 600;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+  }
+  
+  /* Optional: A tiny hover effect */
+  .technology:hover {
+    background-color: #ffffff;
+    color: #1F2532;
+    cursor: default;
+  }
+
 .python-img {
     width: 8.4rem;
     border-radius: 1rem;
