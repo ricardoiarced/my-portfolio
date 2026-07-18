@@ -2,132 +2,99 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Ricardo Arce is a software developer building reliable, accessible, and maintainable web applications.">
     <link rel="icon" href="img/favicon.ico" type="image/x-icon">
-    <title>Ricardo Arce</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+    <title>Ricardo Arce | Software Developer</title>
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="queries.css" />
-    <script defer src="https://smtpjs.com/v3/smtp.js"></script>
-    <script defer src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-
-    <script defer type="module" src="script.js"></script>
+    <link rel="stylesheet" href="queries.css">
 </head>
 
-<body>
-    <header class="header section" id="section--0">
-        <nav class="nav">
-            <div class="name-container">
-                <h3>Ricardo Arce</h3>
-            </div>
-            <div class="nav-btn-container">
-                <ul class="nav__links">
-                    <li class="nav__item">
-                        <a class="nav__link" href="#section--0">About</a>
-                    </li>
-                    <li class="nav__item">
-                        <a class="nav__link" href="#section--1">Experience</a>
-                    </li>
-                    <li class="nav__item">
-                        <a class="nav__link" href="#section--2">Projects</a>
-                    </li>
-                </ul>
-                <button class="btn-mobile-nav">
-                    <img class="icon-mobile-nav" src="./img/menu.svg" name="menu-outline" alt="Menu" />
-                    <img class="icon-mobile-nav" src="./img/close.svg" name="close-outline" alt="Close menu" />
-                </button>
-            </div>
-        </nav>
-        <main>
-            <div class="hero-flex">
-                <img class="hero-img" src="img/me-on-red.png" alt="Me" />
-                <div class="hero-information">
-                    <div class="hero-text">
-                        <h1>Software Engineer</h1>
-                        <p>Sharing value all around the world, always working with a smile!
-                        </p>
-                    </div>
-                    <div class="hero-socials">
-                        <div class="github-img-container">
-                            <a id="github-link" href="https://github.com/ricardoiarced" target="_blank">
-                                <img src="./img/github-img.svg" alt="GitHub profile">
-                            </a>
-                        </div>
-                        <div class="linkedin-img-container">
-                            <a id="linkedin-link" href="https://www.linkedin.com/in/ricardo-irvin-arce-diaz/"
-                                target="_blank">
-                                <img src="./img/linkedin-img.svg" alt="Linkedin profile">
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </main>
-    </header>
-    <section class="work-experience section" id="section--1">
-        <h2>Experience</h2>
-        <hr />
-        <div class="work-experience-container">
-            <div class="job-card">
-                <h3>Software Engineer - Beracah Médica</h3>
-                <p class="job-duration"><strong>October 2023 - Present</strong></p>
-                <ul class="job-responsibilities">
-                    <li>Customized Odoo's checkout process to match operational requirements.</li>
-                    <li>Redesigned website elements to align with branding and UX improvements.</li>
-                    <li>Developed a custom Odoo module to automate product field updates.</li>
-                    <li>Created modules to streamline workflows, reducing bottlenecks and boosting efficiency.</li>
-                    <li>Led the migration from Magento 2 to Odoo Enterprise, implementing 301 redirects and domain
-                        management to preserve SEO.</li>
-                    <li>Built a cron job to update Magento 2 product prices based on supplier foreign currency
-                        fluctuations.</li>
-                </ul>
-                <ul class="technologies-used" aria-label="Technologies used">
-                    <li>
-                        <div class="technology">Python</div>
-                    </li>
-                    <li>
-                        <div class="technology">JavaScript</div>
-                    </li>
-                    <li>
-                        <div class="technology">HTML & CSS</div>
-                    </li>
-                    <li>
-                        <div class="technology">PostgreSQL</div>
-                    </li>
-                    <li>
-                        <div class="technology">Odoo</div>
-                    </li>
-                    <li>
-                        <div class="technology">Magento 2</div>
-                    </li>
-                    <li>
-                        <div class="technology">PHP</div>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </section>
-    <section class="projects section" id="section--2">
-        <h2>Projects</h2>
-        <hr />
-        <div class="projects-flex">
-            <div class="projects-list">
+<body id="top">
+    <a class="skip-link" href="#main-content">Skip to content</a>
 
+    <header class="site-header">
+        <nav class="nav container" aria-label="Primary navigation">
+            <a class="nav__name" href="#top" aria-label="Ricardo Arce, back to top">Ricardo Arce</a>
+            <ul class="nav__links">
+                <li><a class="nav__link" href="#featured-projects">Work</a></li>
+                <li><a class="nav__link" href="#experience">Experience</a></li>
+                <li><a class="nav__link" href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main id="main-content">
+        <section class="hero container" aria-labelledby="hero-title">
+            <div class="hero__content">
+                <p class="eyebrow">Software Developer</p>
+                <h1 id="hero-title">I build reliable web experiences that make complex work feel simple.</h1>
+                <p class="hero__summary">I’m Ricardo Arce, a software developer focused on accessible, maintainable applications that solve practical problems.</p>
+
+                <div class="hero__actions">
+                    <a class="button button--primary" href="#featured-projects">View My Work</a>
+                    <a class="button button--secondary" href="mailto:ricardoiarced@gmail.com">Get in Touch</a>
+                </div>
+
+                <ul class="hero__socials" aria-label="Social profiles">
+                    <li>
+                        <a href="https://github.com/ricardoiarced" target="_blank" rel="noopener noreferrer">GitHub</a>
+                    </li>
+                    <li>
+                        <a href="https://www.linkedin.com/in/ricardo-irvin-arce-diaz/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+                    </li>
+                </ul>
             </div>
-        </div>
-    </section>
-    <footer>
-        <div class="footer-container">
-            <div class="footer-flex">
-                <h2>Copyright &copy; 2023. All rights are reserved.</h2>
-                <div class="footer-mail">
-                    <img src="./img/mail.svg" alt="Mail icon" />
-                    <p>ricardoiarced@gmail.com</p>
+
+            <div class="hero__portrait">
+                <img src="img/me-on-red.png" width="1920" height="1080" alt="Portrait of Ricardo Arce">
+            </div>
+        </section>
+
+        <section class="section section--bordered" id="featured-projects" aria-labelledby="projects-title">
+            <div class="container">
+                <p class="eyebrow">Selected Work</p>
+                <h2 id="projects-title">Featured Projects</h2>
+                <p class="section__intro">A closer look at the product decisions, implementation details, and lessons behind selected projects.</p>
+                <div class="projects-list"></div>
+            </div>
+        </section>
+
+        <section class="section section--bordered" id="experience" aria-labelledby="experience-title">
+            <div class="container">
+                <h2 id="experience-title">Experience</h2>
+                <div class="work-experience-container">
+                    <article class="job-card">
+                        <h3>Software Engineer <span>at Beracah Médica</span></h3>
+                        <p class="job-duration"><strong>October 2023 – Present</strong></p>
+                        <ul class="job-responsibilities">
+                            <li>Customized Odoo's checkout process to match operational requirements.</li>
+                            <li>Redesigned website elements to align with branding and UX improvements.</li>
+                            <li>Developed a custom Odoo module to automate product field updates.</li>
+                            <li>Created modules to streamline workflows, reducing bottlenecks and boosting efficiency.</li>
+                            <li>Led the migration from Magento 2 to Odoo Enterprise, implementing 301 redirects and domain management to preserve SEO.</li>
+                            <li>Built a cron job to update Magento 2 product prices based on supplier foreign currency fluctuations.</li>
+                        </ul>
+                        <ul class="technologies-used" aria-label="Technologies used">
+                            <li>Python</li>
+                            <li>JavaScript</li>
+                            <li>HTML &amp; CSS</li>
+                            <li>PostgreSQL</li>
+                            <li>Odoo</li>
+                            <li>Magento 2</li>
+                            <li>PHP</li>
+                        </ul>
+                    </article>
                 </div>
             </div>
+        </section>
+    </main>
+
+    <footer id="contact">
+        <div class="footer-container container">
+            <p>Copyright &copy; 2023 Ricardo Arce. All rights reserved.</p>
+            <a href="mailto:ricardoiarced@gmail.com">ricardoiarced@gmail.com</a>
         </div>
     </footer>
 </body>
