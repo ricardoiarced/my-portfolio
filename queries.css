@@ -61,6 +61,24 @@
         grid-row: auto;
     }
 
+    .experience-item__header,
+    .experience-item__body {
+        grid-template-columns: 1fr;
+        gap: 1.25rem;
+    }
+
+    .experience-item__body {
+        margin-top: 1.5rem;
+    }
+
+    .experience-item__summary {
+        max-width: 42rem;
+    }
+
+    .skills-grid {
+        grid-template-columns: 1fr;
+    }
+
     .footer-container {
         align-items: flex-start;
         flex-direction: column;

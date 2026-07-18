@@ -348,27 +348,102 @@
 
         <section class="section section--bordered" id="experience" aria-labelledby="experience-title">
             <div class="container">
+                <p class="eyebrow">Professional Experience</p>
                 <h2 id="experience-title">Experience</h2>
-                <div class="work-experience-container">
-                    <article class="job-card">
-                        <h3>Software Engineer <span>at Beracah Médica</span></h3>
-                        <p class="job-duration"><strong>October 2023 – Present</strong></p>
-                        <ul class="job-responsibilities">
-                            <li>Customized Odoo's checkout process to match operational requirements.</li>
-                            <li>Redesigned website elements to align with branding and UX improvements.</li>
-                            <li>Developed a custom Odoo module to automate product field updates.</li>
-                            <li>Created modules to streamline workflows, reducing bottlenecks and boosting efficiency.</li>
-                            <li>Led the migration from Magento 2 to Odoo Enterprise, implementing 301 redirects and domain management to preserve SEO.</li>
-                            <li>Built a cron job to update Magento 2 product prices based on supplier foreign currency fluctuations.</li>
+                <p class="section__intro">Professional work across web platforms, system integrations, and industrial automation, focused on making operational tools more reliable and useful.</p>
+
+                <div class="experience-list">
+                    <article class="experience-item">
+                        <header class="experience-item__header">
+                            <div>
+                                <p class="experience-item__organization">Beracah Médica</p>
+                                <h3>Software Engineer</h3>
+                            </div>
+                            <p class="experience-item__meta"><time datetime="2023-10">Oct 2023</time> – Present <span>/</span> Hermosillo, Sonora</p>
+                        </header>
+                        <div class="experience-item__body">
+                            <p class="experience-item__summary">Develop and integrate commerce systems that support the company’s day-to-day sales, pricing, and product operations.</p>
+                            <ul class="experience-item__achievements">
+                                <li>Adapted Odoo’s checkout flow to the company’s operating model and customized the storefront to support its brand and customer experience.</li>
+                                <li>Built Odoo modules that update product fields from spreadsheet data and streamline internal workflows.</li>
+                                <li>Contributed to the Magento 2 to Odoo Enterprise migration, mapping 301 redirects to preserve existing routes and search traffic.</li>
+                                <li>Integrated a serverless AWS API with Odoo to retrieve exchange rates and deliver updates through Slack.</li>
+                            </ul>
+                        </div>
+                    </article>
+
+                    <article class="experience-item">
+                        <header class="experience-item__header">
+                            <div>
+                                <p class="experience-item__organization">Coinsamatik</p>
+                                <h3>Application Engineer</h3>
+                            </div>
+                            <p class="experience-item__meta"><time datetime="2021-09">Sep 2021</time> – <time datetime="2023-06">Jun 2023</time> <span>/</span> Hermosillo, Sonora</p>
+                        </header>
+                        <div class="experience-item__body">
+                            <p class="experience-item__summary">Programmed and commissioned industrial control applications that connected equipment, operator interfaces, and production data.</p>
+                            <ul class="experience-item__achievements">
+                                <li>Built a C++ application that used a PLC, HMI, and flowmeter to create production files and send their data to a server.</li>
+                                <li>Helped install, program, and commission 30 variable frequency drives controlled through an HMI for a fish cooker.</li>
+                                <li>Developed a PLC and HMI totalizer application to visualize flowmeter data from a pipeline.</li>
+                                <li>Installed and configured a drive with PID control to regulate pressure in a golf-course irrigation pipeline.</li>
+                            </ul>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section class="section section--bordered" id="skills" aria-labelledby="skills-title">
+            <div class="container">
+                <p class="eyebrow">Demonstrated Capabilities</p>
+                <h2 id="skills-title">Skills &amp; Technologies</h2>
+                <p class="section__intro">Tools and practices used in professional work and the selected projects above, grouped by the problems they help solve.</p>
+
+                <div class="skills-grid">
+                    <article class="skill-group">
+                        <h3>Product &amp; interface</h3>
+                        <ul>
+                            <li>React</li>
+                            <li>Next.js</li>
+                            <li>Electron</li>
+                            <li>HTML</li>
+                            <li>CSS</li>
+                            <li>Accessibility</li>
                         </ul>
-                        <ul class="technologies-used" aria-label="Technologies used">
+                    </article>
+                    <article class="skill-group">
+                        <h3>Application &amp; data</h3>
+                        <ul>
                             <li>Python</li>
+                            <li>TypeScript</li>
                             <li>JavaScript</li>
-                            <li>HTML &amp; CSS</li>
+                            <li>Node.js</li>
                             <li>PostgreSQL</li>
+                            <li>Supabase</li>
+                        </ul>
+                    </article>
+                    <article class="skill-group">
+                        <h3>Platforms, delivery &amp; verification</h3>
+                        <ul>
                             <li>Odoo</li>
                             <li>Magento 2</li>
-                            <li>PHP</li>
+                            <li>AWS</li>
+                            <li>Docker</li>
+                            <li>Git</li>
+                            <li>GitHub Actions</li>
+                            <li>Vitest</li>
+                            <li>Playwright</li>
+                        </ul>
+                    </article>
+                    <article class="skill-group">
+                        <h3>Industrial systems</h3>
+                        <ul>
+                            <li>C++</li>
+                            <li>PLCs</li>
+                            <li>HMIs</li>
+                            <li>Variable frequency drives</li>
+                            <li>PID control</li>
                         </ul>
                     </article>
                 </div>
