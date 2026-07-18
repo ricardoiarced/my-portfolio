@@ -57,7 +57,104 @@
                 <p class="eyebrow">Selected Work</p>
                 <h2 id="projects-title">Featured Projects</h2>
                 <p class="section__intro">A closer look at the product decisions, implementation details, and lessons behind selected projects.</p>
-                <div class="projects-list"></div>
+                <div class="projects-list">
+                    <article class="project-story" aria-labelledby="personal-finance-title">
+                        <header class="project-story__header">
+                            <div>
+                                <p class="project-story__index">01 / Flagship case study</p>
+                                <h3 id="personal-finance-title">Personal Finance</h3>
+                            </div>
+                            <p class="project-story__lede">A private workspace that turns scattered financial activity into a clear view of cash flow, plans, and net worth.</p>
+                        </header>
+
+                        <figure class="project-story__visual">
+                            <picture>
+                                <source media="(max-width: 48rem)" srcset="img/personal-finance-dashboard-mobile.png" width="390" height="844">
+                                <img src="img/personal-finance-dashboard.png" width="1720" height="900" decoding="async" alt="Personal Finance dashboard showing navigation and financial snapshot cards in Mexican pesos">
+                            </picture>
+                            <figcaption>Authenticated dashboard with current-state and period-based financial indicators kept deliberately separate.</figcaption>
+                        </figure>
+
+                        <div class="project-story__overview">
+                            <section aria-labelledby="personal-finance-problem">
+                                <p class="project-story__label">The problem</p>
+                                <h4 id="personal-finance-problem">Financial decisions are harder when each part of the picture lives somewhere else.</h4>
+                                <p>Income, expenses, budgets, savings, investments, and liabilities all affect one another, but tracking them separately makes it difficult to understand current position and period activity without rebuilding the same picture by hand.</p>
+                            </section>
+
+                            <aside class="project-story__facts" aria-label="Project facts">
+                                <dl>
+                                    <div>
+                                        <dt>My involvement</dt>
+                                        <dd>Sole repository contributor across product modeling and full-stack implementation</dd>
+                                    </div>
+                                    <div>
+                                        <dt>Principal technologies</dt>
+                                        <dd>Next.js, React, TypeScript, Supabase, PostgreSQL, Tailwind CSS</dd>
+                                    </div>
+                                    <div>
+                                        <dt>Verification</dt>
+                                        <dd>Vitest, Playwright, Supabase acceptance tests, GitHub Actions</dd>
+                                    </div>
+                                    <div>
+                                        <dt>Repository</dt>
+                                        <dd>Private; source access is intentionally not linked</dd>
+                                    </div>
+                                </dl>
+                            </aside>
+                        </div>
+
+                        <section class="project-story__solution" aria-labelledby="personal-finance-solution">
+                            <p class="project-story__label">The delivered solution</p>
+                            <h4 id="personal-finance-solution">One authenticated workspace for recording activity, planning ahead, and reading the whole financial position.</h4>
+                            <p>As the repository’s sole contributor, I defined the product language and built the application across accounts, transactions and transfers, budgets, savings goals, investments, net worth, recurring activity, reports, CSV import and export, and user preferences. The dashboard separates the latest financial snapshot from activity in a selected period, so a date filter does not quietly change values that represent the present.</p>
+                            <a class="button button--secondary project-story__action" href="#personal-finance-decisions">Read the engineering decisions</a>
+                        </section>
+
+                        <section class="project-story__decisions" id="personal-finance-decisions" aria-labelledby="personal-finance-decisions-title">
+                            <div class="project-story__decisions-heading">
+                                <p class="project-story__label">Important technical decisions</p>
+                                <h4 id="personal-finance-decisions-title">Correct financial boundaries before convenient abstractions.</h4>
+                            </div>
+                            <ol class="decision-list">
+                                <li>
+                                    <span>01</span>
+                                    <div>
+                                        <h5>Keep authorization next to the data</h5>
+                                        <p>Authenticated Supabase clients preserve the user identity for PostgreSQL Row-Level Security. A privileged server client is narrowly limited to persistent rate limiting rather than user-owned finance data.</p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <span>02</span>
+                                    <div>
+                                        <h5>Store and calculate money exactly</h5>
+                                        <p>PostgreSQL numeric values cross the persistence boundary as decimal text, while fixed-point application calculations avoid JavaScript floating-point arithmetic until an explicit presentation boundary.</p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <span>03</span>
+                                    <div>
+                                        <h5>Own the interaction boundary</h5>
+                                        <p>Semantic HTML, native forms, Server Actions, and an application-owned CSV boundary provide accessible controls and authoritative server validation without adding component and form libraries that did not solve a concrete gap.</p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <span>04</span>
+                                    <div>
+                                        <h5>Apply filters only where they are truthful</h5>
+                                        <p>Report filters affect only data with the matching dimension. For example, a category cannot imply a change to net worth, and a date range cannot pretend current investment valuations are historical snapshots.</p>
+                                    </div>
+                                </li>
+                            </ol>
+                        </section>
+
+                        <section class="project-story__outcome" aria-labelledby="personal-finance-outcome">
+                            <p class="project-story__label">Outcome and lesson</p>
+                            <h4 id="personal-finance-outcome">A tested foundation whose product rules can be checked, not just described.</h4>
+                            <p>The result is a private application with automated coverage at unit, browser, database, authentication, storage, and cross-user authorization boundaries. The lasting lesson was that finance software becomes easier to extend when terms such as current balance, net cash flow, transfer, and reporting currency have explicit definitions shared by the interface, calculations, and persistence model.</p>
+                        </section>
+                    </article>
+                </div>
             </div>
         </section>
 

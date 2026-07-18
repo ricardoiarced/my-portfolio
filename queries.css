@@ -31,6 +31,36 @@
         width: min(100%, 28rem);
     }
 
+    .project-story__header,
+    .project-story__overview,
+    .project-story__decisions-heading,
+    .project-story__outcome {
+        grid-template-columns: 1fr;
+    }
+
+    .project-story__overview {
+        gap: 3rem;
+    }
+
+    .project-story__decisions {
+        margin-inline: -0.5rem;
+    }
+
+    .decision-list {
+        grid-template-columns: 1fr;
+    }
+
+    .decision-list li,
+    .decision-list li:nth-child(odd),
+    .decision-list li:nth-child(even) {
+        padding: 1.5rem 0;
+        border-right: 0;
+    }
+
+    .project-story__outcome .project-story__label {
+        grid-row: auto;
+    }
+
     .footer-container {
         align-items: flex-start;
         flex-direction: column;
