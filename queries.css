@@ -34,7 +34,9 @@
     .project-story__header,
     .project-story__overview,
     .project-story__decisions-heading,
-    .project-story__outcome {
+    .project-story__outcome,
+    .about-layout,
+    .contact-layout {
         grid-template-columns: 1fr;
     }
 
