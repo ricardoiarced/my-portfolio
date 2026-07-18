@@ -16,11 +16,18 @@
 
     <header class="site-header">
         <nav class="nav container" aria-label="Primary navigation">
-            <a class="nav__name" href="#top" aria-label="Ricardo Arce, back to top">Ricardo Arce</a>
-            <ul class="nav__links">
-                <li><a class="nav__link" href="#featured-projects">Work</a></li>
+            <a class="nav__name" href="#top" aria-label="Ricardo Arce, back to top" aria-current="location">Ricardo Arce</a>
+            <button class="nav__toggle" type="button" aria-expanded="false" aria-controls="primary-navigation" hidden>
+                <span class="visually-hidden">Open navigation menu</span>
+                <span class="nav__toggle-icon" aria-hidden="true"><span></span><span></span></span>
+            </button>
+            <ul class="nav__links" id="primary-navigation">
+                <li><a class="nav__link" href="#featured-projects">Projects</a></li>
                 <li><a class="nav__link" href="#experience">Experience</a></li>
+                <li><a class="nav__link" href="#skills">Skills</a></li>
+                <li><a class="nav__link" href="#about">About</a></li>
                 <li><a class="nav__link" href="#contact">Contact</a></li>
+                <li><a class="nav__link nav__link--resume" href="assets/CV_ARCE_DIAZ_RICARDO_IRVIN.pdf" download>Résumé</a></li>
             </ul>
         </nav>
     </header>
@@ -501,6 +508,7 @@
             <p>Built and deployed with GitHub Pages.</p>
         </div>
     </footer>
+    <script src="script.js" defer></script>
 </body>
 
 </html>
