@@ -70,7 +70,7 @@
                         <figure class="project-story__visual">
                             <picture>
                                 <source media="(max-width: 48rem)" srcset="img/personal-finance-dashboard-mobile.png" width="390" height="844">
-                                <img src="img/personal-finance-dashboard.png" width="1720" height="900" decoding="async" alt="Personal Finance dashboard showing navigation and financial snapshot cards in Mexican pesos">
+                                <img src="img/personal-finance-dashboard.png" width="1720" height="900" loading="lazy" decoding="async" alt="Personal Finance dashboard showing navigation and financial snapshot cards in Mexican pesos">
                             </picture>
                             <figcaption>Authenticated dashboard with current-state and period-based financial indicators kept deliberately separate.</figcaption>
                         </figure>
@@ -152,6 +152,194 @@
                             <p class="project-story__label">Outcome and lesson</p>
                             <h4 id="personal-finance-outcome">A tested foundation whose product rules can be checked, not just described.</h4>
                             <p>The result is a private application with automated coverage at unit, browser, database, authentication, storage, and cross-user authorization boundaries. The lasting lesson was that finance software becomes easier to extend when terms such as current balance, net cash flow, transfer, and reporting currency have explicit definitions shared by the interface, calculations, and persistence model.</p>
+                        </section>
+                    </article>
+
+                    <article class="project-story" aria-labelledby="local-notes-title">
+                        <header class="project-story__header">
+                            <div>
+                                <p class="project-story__index">02 / Desktop application</p>
+                                <h3 id="local-notes-title">Local Notes</h3>
+                            </div>
+                            <p class="project-story__lede">A focused desktop writing space that keeps ordinary Markdown files, not an application database, as the durable source of truth.</p>
+                        </header>
+
+                        <figure class="project-story__visual">
+                            <img src="img/local-notes.png" width="1040" height="600" loading="lazy" decoding="async" alt="Local Notes Source Mode showing a Markdown file beside its plain-file folder tree">
+                            <figcaption>Source Mode makes the storage model visible: the note remains readable Markdown in a normal folder hierarchy.</figcaption>
+                        </figure>
+
+                        <div class="project-story__overview">
+                            <section aria-labelledby="local-notes-problem">
+                                <p class="project-story__label">The problem</p>
+                                <h4 id="local-notes-problem">File ownership and a polished writing experience should not be opposing choices.</h4>
+                                <p>Writers who value portable local files often have to accept a thin editing experience, while richer tools can make an account, database, or proprietary workspace the real home of their notes. Local Notes explores a third option: focused writing without surrendering the underlying files.</p>
+                            </section>
+
+                            <aside class="project-story__facts" aria-label="Local Notes project facts">
+                                <dl>
+                                    <div>
+                                        <dt>My involvement</dt>
+                                        <dd>Designed and implemented the desktop application end to end</dd>
+                                    </div>
+                                    <div>
+                                        <dt>Principal technologies</dt>
+                                        <dd>Electron, TypeScript, CodeMirror, Node.js file APIs, YAML</dd>
+                                    </div>
+                                    <div>
+                                        <dt>Verification</dt>
+                                        <dd>Vitest unit tests, Playwright Electron tests, packaging checks, GitHub Actions</dd>
+                                    </div>
+                                    <div>
+                                        <dt>Repository</dt>
+                                        <dd>Private; source and release downloads are intentionally not linked</dd>
+                                    </div>
+                                </dl>
+                            </aside>
+                        </div>
+
+                        <section class="project-story__solution" aria-labelledby="local-notes-solution">
+                            <p class="project-story__label">The delivered solution</p>
+                            <h4 id="local-notes-solution">A Markdown canvas whose conveniences can always be rebuilt from the Notes Folder.</h4>
+                            <p>I built the Electron filesystem and IPC layers, CodeMirror writing surface, raw YAML frontmatter editing, folder navigation, search, backlinks, standard Markdown link autocomplete, autosave, recovery, and external-change handling. Notes are discovered recursively from a selected folder and identified by relative paths; search and relationships are derived from those files instead of a durable app-owned index.</p>
+                            <a class="button button--secondary project-story__action" href="#local-notes-decisions">Read the engineering decisions</a>
+                        </section>
+
+                        <section class="project-story__decisions" id="local-notes-decisions" aria-labelledby="local-notes-decisions-title">
+                            <div class="project-story__decisions-heading">
+                                <p class="project-story__label">Important technical decisions</p>
+                                <h4 id="local-notes-decisions-title">Treat interoperability and recovery as core product behavior.</h4>
+                            </div>
+                            <ol class="decision-list">
+                                <li>
+                                    <span>01</span>
+                                    <div>
+                                        <h5>Let paths carry identity</h5>
+                                        <p>Relative Note Paths replace generated record IDs, and the fast <code>[[</code> input flow saves ordinary relative Markdown links. Renames retarget incoming links so filesystem organization does not quietly break navigation.</p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <span>02</span>
+                                    <div>
+                                        <h5>Protect work before and after a file exists</h5>
+                                        <p>Untitled prose is recovery-backed while it waits for timed note creation. Existing notes use debounced saves with expected-content checks, while external edits either reload safely or become an explicit conflict instead of a silent overwrite.</p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <span>03</span>
+                                    <div>
+                                        <h5>Keep desktop privileges behind a narrow boundary</h5>
+                                        <p>Filesystem access stays in Electron’s main process behind a typed preload bridge, with context isolation, no Node.js integration in the renderer, and managed-path validation at the file boundary.</p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <span>04</span>
+                                    <div>
+                                        <h5>Choose the editor for the interaction model</h5>
+                                        <p>The writing surface moved from a WYSIWYG-oriented editor to CodeMirror when visible Markdown structure became central. A separate Source Mode still exposes the complete file, including frontmatter.</p>
+                                    </div>
+                                </li>
+                            </ol>
+                        </section>
+
+                        <section class="project-story__outcome" aria-labelledby="local-notes-outcome">
+                            <p class="project-story__label">Outcome and lesson</p>
+                            <h4 id="local-notes-outcome">A tested writing workflow that remains useful outside the application.</h4>
+                            <p>The application covers writing, metadata, search, links, recovery, external changes, and packaged desktop behavior with automated tests. The central lesson was that “local-first” takes more than removing a database: the software must preserve unknown file content, coordinate with other editors, and keep every convenience subordinate to the user-owned files.</p>
+                        </section>
+                    </article>
+
+                    <article class="project-story" aria-labelledby="pomodoro-title">
+                        <header class="project-story__header">
+                            <div>
+                                <p class="project-story__index">03 / Browser application</p>
+                                <h3 id="pomodoro-title">Pomodoro Timer</h3>
+                            </div>
+                            <p class="project-story__lede">A glanceable interval timer designed to keep Work Sessions, recovery breaks, and restored browser state predictable.</p>
+                        </header>
+
+                        <figure class="project-story__visual project-story__visual--light">
+                            <img src="img/pomodoro-timer.png" width="1440" height="960" loading="lazy" decoding="async" alt="Pomodoro Timer ready for a 25-minute Work Session with progress and interval controls visible">
+                            <figcaption>The ready state exposes the full cycle without hover: Work, Short Break, Long Break, progress, sound, and Interval Configuration.</figcaption>
+                        </figure>
+
+                        <div class="project-story__overview">
+                            <section aria-labelledby="pomodoro-problem">
+                                <p class="project-story__label">The problem</p>
+                                <h4 id="pomodoro-problem">A simple countdown becomes unreliable when time, cycle rules, and browser state disagree.</h4>
+                                <p>People using focused intervals need to see what kind of session is active, trust pause and resume behavior, understand when recovery changes from a Short Break to a Long Break, and return after closing the page without losing an in-progress cycle.</p>
+                            </section>
+
+                            <aside class="project-story__facts" aria-label="Pomodoro Timer project facts">
+                                <dl>
+                                    <div>
+                                        <dt>My involvement</dt>
+                                        <dd>Designed and implemented the supplied browser application and behavior tests</dd>
+                                    </div>
+                                    <div>
+                                        <dt>Principal technologies</dt>
+                                        <dd>React, TypeScript, Vite, browser storage, Web Audio API, CSS</dd>
+                                    </div>
+                                    <div>
+                                        <dt>Verification</dt>
+                                        <dd>Vitest, Testing Library, typed production build</dd>
+                                    </div>
+                                    <div>
+                                        <dt>Source status</dt>
+                                        <dd>Implementation is local and not yet pushed; no empty source action is shown</dd>
+                                    </div>
+                                </dl>
+                            </aside>
+                        </div>
+
+                        <section class="project-story__solution" aria-labelledby="pomodoro-solution">
+                            <p class="project-story__label">The delivered solution</p>
+                            <h4 id="pomodoro-solution">A complete Pomodoro cycle that prepares the next interval without taking control away.</h4>
+                            <p>I implemented Work Session start, pause, resume, reset, and completion behavior; Short Break and Long Break transitions; and Interval Configuration for all three durations plus the long-break threshold. Completed Work Sessions advance the streak and prepare the appropriate break, but the next interval waits for the user. Versioned browser persistence restores configuration, progress, and a running deadline, including completion that occurred while the page was closed.</p>
+                            <a class="button button--secondary project-story__action" href="#pomodoro-decisions">Read the engineering decisions</a>
+                        </section>
+
+                        <section class="project-story__decisions" id="pomodoro-decisions" aria-labelledby="pomodoro-decisions-title">
+                            <div class="project-story__decisions-heading">
+                                <p class="project-story__label">Important technical decisions</p>
+                                <h4 id="pomodoro-decisions-title">Make time-dependent behavior explicit, restorable, and accessible.</h4>
+                            </div>
+                            <ol class="decision-list">
+                                <li>
+                                    <span>01</span>
+                                    <div>
+                                        <h5>Store a deadline, not a ticking counter</h5>
+                                        <p>A running interval records an absolute target time. The interface derives remaining time from the clock, so delayed renders do not create cumulative drift and closed-page recovery can determine whether the session finished.</p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <span>02</span>
+                                    <div>
+                                        <h5>Separate cycle rules from React</h5>
+                                        <p>Pure TypeScript transitions own completion, break selection, configuration validation, and local-calendar progress. React dispatches those transitions and renders their state, keeping timer rules directly testable.</p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <span>03</span>
+                                    <div>
+                                        <h5>Communicate state through more than color</h5>
+                                        <p>Native controls, visible labels, pressed states, contextual accessible names, polite live status messages, strong keyboard focus, and reduced-motion styles support operation without relying on the session palette alone.</p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <span>04</span>
+                                    <div>
+                                        <h5>Check the storage envelope before loading</h5>
+                                        <p>Browser storage checks the schema version, recognized session and status values, configuration ranges, remaining time, and progress fields before loading. Unparseable or rejected data falls back to the default timer state.</p>
+                                    </div>
+                                </li>
+                            </ol>
+                        </section>
+
+                        <section class="project-story__outcome" aria-labelledby="pomodoro-outcome">
+                            <p class="project-story__label">Outcome and lesson</p>
+                            <h4 id="pomodoro-outcome">A functioning, tested cycle that can recover from an interrupted browser session.</h4>
+                            <p>Automated tests cover Work Session controls, Short Break and Long Break selection, configuration validation, persistence, daily progress, and recovery after the deadline passes while the page is closed. The durable lesson was that separating transition rules from presentation and persisting an absolute deadline makes timer behavior both easier to verify and more trustworthy to restore.</p>
                         </section>
                     </article>
                 </div>
