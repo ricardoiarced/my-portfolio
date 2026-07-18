@@ -1,12 +1,18 @@
 {
   "name": "my-portfolio",
   "version": "1.0.0",
-  "description": "",
+  "description": "Ricardo Arce's software development portfolio",
   "source": "index.html",
   "scripts": {
-    "start": "parcel",
-    "build": "parcel build",
-    "test": "node --test tests/*.test.mjs"
+    "start": "node scripts/static-server.mjs",
+    "build": "parcel build --public-url ./",
+    "check": "node --check script.js && node --check scripts/*.mjs && node --check tests/*.mjs",
+    "test": "node --test tests/*.test.mjs",
+    "test:links": "node scripts/check-external-links.mjs",
+    "test:browser": "playwright test tests/release-browser.spec.mjs",
+    "audit:lighthouse": "node scripts/lighthouse-audit.mjs",
+    "release:check": "npm test && npm run check && npm run test:links && npm run test:browser && npm run audit:lighthouse",
+    "verify:production": "node scripts/verify-production.mjs"
   },
   "repository": {
     "type": "git",
@@ -17,5 +23,13 @@
   "bugs": {
     "url": "https://github.com/ricardoiarced/my-portfolio/issues"
   },
-  "homepage": "https://github.com/ricardoiarced/my-portfolio#readme"
+  "homepage": "https://ricardoiarced.github.io/my-portfolio/",
+  "devDependencies": {
+    "@parcel/packager-raw-url": "2.16.4",
+    "@parcel/transformer-jsonld": "2.16.4",
+    "@parcel/transformer-webmanifest": "2.16.4",
+    "@playwright/test": "1.55.1",
+    "lighthouse": "12.6.1",
+    "parcel": "2.16.4"
+  }
 }
