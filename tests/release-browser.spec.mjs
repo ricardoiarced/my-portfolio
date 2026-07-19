@@ -56,7 +56,7 @@ test("keyboard, landmarks, headings, actions, and reduced motion remain usable",
 });
 
 test("text-first hero keeps its approved hierarchy and restrained accent", async ({ page }) => {
-  await page.setViewportSize({ width: 1280, height: 800 });
+  await page.setViewportSize({ width: 1600, height: 800 });
   await page.goto("./");
 
   await expect(page.locator("#primary-navigation a")).toHaveText(["Work", "Contact"]);
@@ -67,9 +67,19 @@ test("text-first hero keeps its approved hierarchy and restrained accent", async
 
   const desktopHero = await page.locator(".hero").evaluate((hero) => {
     const headline = hero.querySelector("h1");
+    const content = hero.querySelector(".hero-content");
+    const footer = hero.querySelector(".hero-footer");
+    const availability = hero.querySelector(".hero__availability");
+    const socials = hero.querySelector(".hero__socials");
+    const navigation = document.querySelector(".nav");
     const primary = hero.querySelector(".hero__primary");
-    const meta = hero.querySelector(".hero__meta");
     const headlineStyle = getComputedStyle(headline);
+    const heroBounds = hero.getBoundingClientRect();
+    const contentBounds = content.getBoundingClientRect();
+    const footerBounds = footer.getBoundingClientRect();
+    const availabilityBounds = availability.getBoundingClientRect();
+    const socialsBounds = socials.getBoundingClientRect();
+    const navigationBounds = navigation.getBoundingClientRect();
     const accent = "rgb(91, 155, 217)";
     const accentElements = [...document.querySelectorAll(".site-header *, .hero *")]
       .filter((element) => {
@@ -82,10 +92,20 @@ test("text-first hero keeps its approved hierarchy and restrained accent", async
     return {
       fontSize: Number.parseFloat(headlineStyle.fontSize),
       lineCount: headline.getBoundingClientRect().height / Number.parseFloat(headlineStyle.lineHeight),
+      lineBreaks: headline.querySelectorAll("br").length,
+      pageWidth: document.body.clientWidth,
+      heroWidth: heroBounds.width,
+      contentWidth: contentBounds.width,
+      footerWidth: footerBounds.width,
+      navigationWidth: navigationBounds.width,
+      contentCenterOffset: contentBounds.top + (contentBounds.height / 2) -
+        (heroBounds.top + (heroBounds.height / 2)),
+      footerLeftGap: availabilityBounds.left - footerBounds.left,
+      footerRightGap: footerBounds.right - socialsBounds.right,
       primaryBackground: getComputedStyle(primary).backgroundColor,
       primaryBorder: getComputedStyle(primary).borderStyle,
       primaryDecoration: getComputedStyle(primary).textDecorationLine,
-      divider: getComputedStyle(meta).borderTopWidth,
+      divider: getComputedStyle(footer).borderTopWidth,
       accentElements,
       hasDecorativeEffect: [...hero.querySelectorAll("*")].some((element) => {
         const style = getComputedStyle(element);
@@ -97,6 +117,14 @@ test("text-first hero keeps its approved hierarchy and restrained accent", async
   expect(desktopHero.fontSize).toBeGreaterThanOrEqual(56);
   expect(desktopHero.fontSize).toBeLessThanOrEqual(58);
   expect(desktopHero.lineCount).toBeLessThanOrEqual(2.1);
+  expect(desktopHero.lineBreaks).toBe(1);
+  expect(desktopHero.heroWidth).toBe(Math.min(1400, desktopHero.pageWidth - 64));
+  expect(desktopHero.navigationWidth).toBe(desktopHero.heroWidth);
+  expect(desktopHero.contentWidth).toBe(1100);
+  expect(desktopHero.footerWidth).toBe(desktopHero.heroWidth);
+  expect(desktopHero.footerLeftGap).toBe(0);
+  expect(desktopHero.footerRightGap).toBe(0);
+  expect(desktopHero.contentCenterOffset).toBeLessThan(0);
   expect(desktopHero.primaryBackground).toBe("rgba(0, 0, 0, 0)");
   expect(desktopHero.primaryBorder).toBe("none");
   expect(desktopHero.primaryDecoration).toContain("underline");
@@ -125,7 +153,20 @@ test("text-first hero keeps its approved hierarchy and restrained accent", async
   const mobileHeadlineSize = await page.locator("h1").evaluate((element) =>
     Number.parseFloat(getComputedStyle(element).fontSize),
   );
+  const mobileFooter = await page.locator(".hero-footer").evaluate((footer) => {
+    const footerBounds = footer.getBoundingClientRect();
+    const availabilityBounds = footer.querySelector(".hero__availability").getBoundingClientRect();
+    const socialsBounds = footer.querySelector(".hero__socials").getBoundingClientRect();
+    return {
+      direction: getComputedStyle(footer).flexDirection,
+      leftGap: availabilityBounds.left - footerBounds.left,
+      rightGap: footerBounds.right - socialsBounds.right,
+    };
+  });
   expect(mobileLayout.linksTop).toBeGreaterThanOrEqual(mobileLayout.wordmarkBottom);
   expect(mobileHeadlineSize).toBeGreaterThanOrEqual(36);
   expect(mobileHeadlineSize).toBeLessThanOrEqual(40);
+  expect(mobileFooter.direction).toBe("row");
+  expect(mobileFooter.leftGap).toBe(0);
+  expect(mobileFooter.rightGap).toBe(0);
 });

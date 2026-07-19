@@ -10,7 +10,7 @@ test("presents the approved text-first introduction", () => {
   assert.ok(hero, "Homepage hero should exist");
 
   assert.match(hero, /<p class="eyebrow">Software Developer<\/p>/);
-  assert.match(hero, /<h1[^>]*>I build reliable web experiences that make complex work feel simple\.<\/h1>/);
+  assert.match(hero, /<h1[^>]*>I build reliable web experiences<br>that make complex work feel simple\.<\/h1>/);
   assert.match(hero, /I’m Ricardo Arce, a software developer focused on accessible, maintainable applications that solve practical problems\./);
   assert.match(hero, /class="hero__primary" href="#featured-projects">View projects →<\/a>/);
   assert.match(hero, /class="hero__secondary" href="#contact">Get in touch<\/a>/);

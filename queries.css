@@ -9,10 +9,6 @@
         --header-height: 7.5rem;
     }
 
-    .container {
-        width: min(calc(100% - 2rem), var(--content-width));
-    }
-
     .nav {
         align-items: flex-start;
         flex-direction: column;
@@ -37,11 +33,6 @@
     h1 {
         max-width: 20ch;
         font-size: clamp(2.25rem, 10vw, 2.5rem);
-    }
-
-    .hero__meta {
-        align-items: flex-start;
-        flex-direction: column;
     }
 
     .project-story__header,
