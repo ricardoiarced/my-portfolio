@@ -18,6 +18,7 @@ const mimeTypes = {
   ".svg": "image/svg+xml",
   ".webmanifest": "application/manifest+json",
   ".webp": "image/webp",
+  ".woff2": "font/woff2",
 };
 
 export function startStaticServer(port = 4173) {

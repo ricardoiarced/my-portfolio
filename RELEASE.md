@@ -11,13 +11,13 @@ The release check and source review cover:
 - A skip link, one `main` landmark, labeled primary navigation, and a footer landmark.
 - One `h1` and a heading hierarchy without skipped levels.
 - Descriptive alternatives and intrinsic dimensions for every content image.
-- Visible `:focus-visible` treatment and keyboard operation for the responsive menu.
+- Visible `:focus-visible` treatment and keyboard access to the always-visible responsive navigation.
 - Text labels for navigation, contact, resume, and external-profile actions.
 - Text and interactive colors with WCAG AA contrast against their backgrounds.
 - `prefers-reduced-motion` disabling smooth scrolling and transitions.
 - No horizontal overflow at the representative desktop, tablet, and mobile viewports.
 
-The site uses no form, tracking script, remote font, icon library, SMTP client, or other third-party runtime resource. Private and unpublished project repositories are described as unavailable rather than linked.
+The site uses no form, tracking script, remote font request, icon library, SMTP client, or other third-party runtime resource. Fraunces, Inter, and IBM Plex Mono are served from the repository. Private and unpublished project repositories are described as unavailable rather than linked.
 
 ## GitHub Pages
 

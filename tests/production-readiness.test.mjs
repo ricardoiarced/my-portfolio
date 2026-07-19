@@ -61,7 +61,7 @@ test("uses deploy-safe links and references assets that exist", async () => {
 
 test("serves optimized media with stable dimensions and deliberate loading", async () => {
   const contentImages = [...html.matchAll(/<img\s[^>]+>/g)].map(([image]) => image);
-  assert.equal(contentImages.length, 4);
+  assert.equal(contentImages.length, 3);
 
   for (const image of contentImages) {
     assert.match(image, /\bwidth="\d+"/);
@@ -70,8 +70,7 @@ test("serves optimized media with stable dimensions and deliberate loading", asy
     assert.match(image, /\.(?:webp|avif)"/);
   }
 
-  assert.doesNotMatch(contentImages[0], /\bloading="lazy"/);
-  for (const image of contentImages.slice(1)) assert.match(image, /\bloading="lazy"/);
+  for (const image of contentImages) assert.match(image, /\bloading="lazy"/);
 
   const budgets = {
     "img/me-on-red.webp": 100_000,

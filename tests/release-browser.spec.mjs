@@ -54,3 +54,78 @@ test("keyboard, landmarks, headings, actions, and reduced motion remain usable",
   await expect(page.locator('a[href^="https://www.linkedin.com/"]')).not.toHaveCount(0);
   expect(await page.locator("html").evaluate((element) => getComputedStyle(element).scrollBehavior)).toBe("auto");
 });
+
+test("text-first hero keeps its approved hierarchy and restrained accent", async ({ page }) => {
+  await page.setViewportSize({ width: 1280, height: 800 });
+  await page.goto("./");
+
+  await expect(page.locator("#primary-navigation a")).toHaveText(["Work", "Contact"]);
+  await expect(page.locator(".nav__toggle, .hero img")).toHaveCount(0);
+  await expect(page.locator(".hero__primary")).toHaveText("View projects →");
+  await expect(page.locator(".hero__secondary")).toHaveText("Get in touch");
+  await expect(page.locator(".hero__availability")).toContainText("Available for new opportunities");
+
+  const desktopHero = await page.locator(".hero").evaluate((hero) => {
+    const headline = hero.querySelector("h1");
+    const primary = hero.querySelector(".hero__primary");
+    const meta = hero.querySelector(".hero__meta");
+    const headlineStyle = getComputedStyle(headline);
+    const accent = "rgb(91, 155, 217)";
+    const accentElements = [...document.querySelectorAll(".site-header *, .hero *")]
+      .filter((element) => {
+        const style = getComputedStyle(element);
+        return style.color === accent || style.backgroundColor === accent ||
+          (style.textDecorationLine !== "none" && style.textDecorationColor === accent);
+      })
+      .map((element) => element.className);
+
+    return {
+      fontSize: Number.parseFloat(headlineStyle.fontSize),
+      lineCount: headline.getBoundingClientRect().height / Number.parseFloat(headlineStyle.lineHeight),
+      primaryBackground: getComputedStyle(primary).backgroundColor,
+      primaryBorder: getComputedStyle(primary).borderStyle,
+      primaryDecoration: getComputedStyle(primary).textDecorationLine,
+      divider: getComputedStyle(meta).borderTopWidth,
+      accentElements,
+      hasDecorativeEffect: [...hero.querySelectorAll("*")].some((element) => {
+        const style = getComputedStyle(element);
+        return style.boxShadow !== "none" || style.backgroundImage !== "none";
+      }),
+    };
+  });
+
+  expect(desktopHero.fontSize).toBeGreaterThanOrEqual(56);
+  expect(desktopHero.fontSize).toBeLessThanOrEqual(58);
+  expect(desktopHero.lineCount).toBeLessThanOrEqual(2.1);
+  expect(desktopHero.primaryBackground).toBe("rgba(0, 0, 0, 0)");
+  expect(desktopHero.primaryBorder).toBe("none");
+  expect(desktopHero.primaryDecoration).toContain("underline");
+  expect(desktopHero.divider).toBe("1px");
+  expect(desktopHero.accentElements).toEqual(["eyebrow", "hero__primary", ""]);
+  expect(desktopHero.hasDecorativeEffect).toBe(false);
+
+  await page.locator("#featured-projects").scrollIntoViewIfNeeded();
+  await expect(page.getByRole("link", { name: "Work", exact: true })).toHaveAttribute("aria-current", "location");
+
+  await page.setViewportSize({ width: 900, height: 900 });
+  await page.goto("./");
+  const tabletLineCount = await page.locator("h1").evaluate((headline) => {
+    const style = getComputedStyle(headline);
+    return headline.getBoundingClientRect().height / Number.parseFloat(style.lineHeight);
+  });
+  expect(tabletLineCount).toBeLessThanOrEqual(2.1);
+
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.goto("./");
+  const mobileLayout = await page.locator(".nav").evaluate((navigation) => {
+    const wordmark = navigation.querySelector(".nav__name").getBoundingClientRect();
+    const links = navigation.querySelector(".nav__links").getBoundingClientRect();
+    return { wordmarkBottom: wordmark.bottom, linksTop: links.top };
+  });
+  const mobileHeadlineSize = await page.locator("h1").evaluate((element) =>
+    Number.parseFloat(getComputedStyle(element).fontSize),
+  );
+  expect(mobileLayout.linksTop).toBeGreaterThanOrEqual(mobileLayout.wordmarkBottom);
+  expect(mobileHeadlineSize).toBeGreaterThanOrEqual(36);
+  expect(mobileHeadlineSize).toBeLessThanOrEqual(40);
+});

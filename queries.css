@@ -1,76 +1,12 @@
 @media (max-width: 64rem) {
-    .site-header--enhanced .nav__toggle {
-        display: inline-flex;
-    }
-
-    .site-header:not(.site-header--enhanced) {
-        position: static;
-    }
-
-    .site-header:not(.site-header--enhanced) .nav {
-        flex-wrap: wrap;
-        padding-block: 0.75rem;
-    }
-
-    .site-header:not(.site-header--enhanced) .nav__links {
-        width: 100%;
-        flex-wrap: wrap;
-    }
-
-    .site-header--enhanced .nav__links {
-        position: absolute;
-        top: calc(100% + 1px);
-        right: 0;
-        width: min(22rem, calc(100vw - 2rem));
-        max-height: calc(100dvh - var(--header-height) - 1rem);
-        display: flex;
-        align-items: stretch;
-        flex-direction: column;
-        gap: 0.25rem;
-        padding: 0.75rem;
-        overflow-y: auto;
-        border: 1px solid var(--color-border);
-        border-top: 0;
-        border-radius: 0 0 0.5rem 0.5rem;
-        background: var(--color-surface);
-        box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.35);
-    }
-
-    .site-header--enhanced .nav__links[hidden] {
-        display: none;
-    }
-
-    .site-header--enhanced .nav__link {
-        width: 100%;
-        min-height: 3rem;
-        padding-inline: 0.75rem;
-        border-radius: 0.25rem;
-        font-size: 0.9rem;
-    }
-
-    .site-header--enhanced .nav__link:hover,
-    .site-header--enhanced .nav__link[aria-current="location"] {
-        background: rgba(114, 199, 184, 0.1);
-    }
-
-    .site-header--enhanced .nav__link[aria-current="location"]::after {
-        top: 0.65rem;
-        right: auto;
-        bottom: 0.65rem;
-        left: 0;
-        width: 0.15rem;
-        height: auto;
-    }
-
-    .site-header--enhanced .nav__link--resume {
-        border-color: var(--color-accent);
-        border-radius: 0.25rem;
+    h1 {
+        font-size: 2.5rem;
     }
 }
 
 @media (max-width: 48rem) {
     :root {
-        --header-height: 4rem;
+        --header-height: 7.5rem;
     }
 
     .container {
@@ -78,8 +14,11 @@
     }
 
     .nav {
-        align-items: center;
-        gap: 1rem;
+        align-items: flex-start;
+        flex-direction: column;
+        justify-content: center;
+        gap: 0.25rem;
+        padding-block: 0.75rem;
     }
 
     .nav__links {
@@ -92,13 +31,17 @@
 
     .hero {
         min-height: auto;
-        grid-template-columns: 1fr;
-        gap: 3.5rem;
         padding-block: 5rem 6rem;
     }
 
-    .hero__portrait {
-        width: min(100%, 28rem);
+    h1 {
+        max-width: 20ch;
+        font-size: clamp(2.25rem, 10vw, 2.5rem);
+    }
+
+    .hero__meta {
+        align-items: flex-start;
+        flex-direction: column;
     }
 
     .project-story__header,
@@ -160,12 +103,8 @@
 }
 
 @media (max-width: 30rem) {
-    :root {
-        --header-height: 3.75rem;
-    }
-
     .nav__name {
-        font-size: 0.9rem;
+        font-size: 1rem;
     }
 
     .nav__links {
@@ -177,7 +116,6 @@
         font-size: 0.72rem;
     }
 
-    .hero__actions,
     .button {
         width: 100%;
     }
