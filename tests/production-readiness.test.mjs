@@ -4,6 +4,11 @@ import test from "node:test";
 
 const root = new URL("../", import.meta.url);
 const html = await readFile(new URL("index.html", root), "utf8");
+const projectPages = await Promise.all([
+  "projects/personal-finance.html",
+  "projects/local-notes.html",
+  "projects/pomodoro-timer.html",
+].map((path) => readFile(new URL(path, root), "utf8")));
 const head = html.match(/<head>[\s\S]*?<\/head>/)?.[0];
 const publicUrl = "https://ricardoiarced.github.io/my-portfolio/";
 const description =
@@ -59,8 +64,14 @@ test("uses deploy-safe links and references assets that exist", async () => {
   }
 });
 
-test("serves optimized media with stable dimensions and deliberate loading", async () => {
-  const contentImages = [...html.matchAll(/<img\s[^>]+>/g)].map(([image]) => image);
+test("keeps homepage imagery-free and serves optimized case-study media", async () => {
+  const workSection = html.match(/<section[^>]+id="featured-projects"[\s\S]*?<\/section>/)?.[0];
+  assert.ok(workSection, "Work section should exist");
+  assert.doesNotMatch(workSection, /<img\b/);
+
+  const contentImages = projectPages.flatMap((page) =>
+    [...page.matchAll(/<img\s[^>]+>/g)].map(([image]) => image)
+  );
   assert.equal(contentImages.length, 3);
 
   for (const image of contentImages) {
@@ -69,8 +80,6 @@ test("serves optimized media with stable dimensions and deliberate loading", asy
     assert.match(image, /\balt="[^"]+"/);
     assert.match(image, /\.(?:webp|avif)"/);
   }
-
-  for (const image of contentImages) assert.match(image, /\bloading="lazy"/);
 
   const budgets = {
     "img/me-on-red.webp": 100_000,
@@ -94,4 +103,14 @@ test("loads no third-party runtime resources", () => {
   const runtimeResources = [...scripts, ...links];
   assert.doesNotMatch(runtimeResources.join("\n"), /^https?:/m);
   assert.doesNotMatch(html, /smtp|emailjs|fontawesome|fonts\.(?:googleapis|gstatic)/i);
+});
+
+test("case studies preserve the site accessibility landmarks", () => {
+  for (const page of projectPages) {
+    assert.match(page, /<a class="skip-link" href="#main-content">Skip to content<\/a>/);
+    assert.match(page, /<nav class="nav container" aria-label="Primary navigation">/);
+    assert.match(page, /<main class="case-study" id="main-content" tabindex="-1">/);
+    assert.match(page, /<footer>/);
+    assert.equal([...page.matchAll(/<h1\b/g)].length, 1);
+  }
 });

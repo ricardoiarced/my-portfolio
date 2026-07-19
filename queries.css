@@ -35,36 +35,38 @@
         font-size: clamp(2.25rem, 10vw, 2.5rem);
     }
 
-    .project-story__header,
-    .project-story__overview,
-    .project-story__decisions-heading,
-    .project-story__outcome,
     .about-layout,
     .contact-layout {
         grid-template-columns: 1fr;
     }
 
-    .project-story__overview {
-        gap: 3rem;
+    .work-container {
+        width: calc(100% - 40px);
     }
 
-    .project-story__decisions {
-        margin-inline: -0.5rem;
+    .project-row {
+        grid-template-columns: 1fr;
+        gap: 1.25rem;
+        padding-block: 4rem;
     }
 
-    .decision-list {
+    .project-row__content {
         grid-template-columns: 1fr;
     }
 
-    .decision-list li,
-    .decision-list li:nth-child(odd),
-    .decision-list li:nth-child(even) {
-        padding: 1.5rem 0;
-        border-right: 0;
+    .project-row h3 {
+        font-size: 1.625rem;
     }
 
-    .project-story__outcome .project-story__label {
+    .project-row__stack,
+    .project-row__link {
+        grid-column: 1;
         grid-row: auto;
+    }
+
+    .project-row__stack {
+        margin-top: 1.75rem;
+        margin-bottom: 1rem;
     }
 
     .experience-item__header,
@@ -85,6 +87,14 @@
         grid-template-columns: 1fr;
     }
 
+    .case-study {
+        width: calc(100% - 40px);
+    }
+
+    .case-study__body {
+        grid-template-columns: 1fr;
+    }
+
     .footer-container {
         align-items: flex-start;
         flex-direction: column;
@@ -94,6 +104,14 @@
 }
 
 @media (max-width: 30rem) {
+    .case-study {
+        width: calc(100% - 32px);
+    }
+
+    .work-container {
+        width: calc(100% - 32px);
+    }
+
     .nav__name {
         font-size: 1rem;
     }

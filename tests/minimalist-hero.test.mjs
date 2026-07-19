@@ -35,6 +35,7 @@ test("uses the approved palette and self-hosted type roles", async () => {
     "fonts/fraunces-latin.woff2",
     "fonts/inter-latin.woff2",
     "fonts/ibm-plex-mono-latin-regular.woff2",
+    "fonts/ibm-plex-mono-latin-medium.woff2",
   ];
   for (const fontFile of fontFiles) {
     await access(new URL(`../${fontFile}`, import.meta.url));
@@ -45,5 +46,6 @@ test("uses the approved palette and self-hosted type roles", async () => {
   assert.match(css, /h1\s*{[\s\S]*?font-family: "Fraunces"/);
   assert.match(css, /body\s*{[\s\S]*?font-family: "Inter"/);
   assert.match(css, /\.eyebrow\s*{[\s\S]*?font-family: "IBM Plex Mono"/);
+  assert.match(css, /ibm-plex-mono-latin-medium\.woff2[\s\S]*?font-weight: 500;/);
   assert.doesNotMatch(html, /fonts\.(?:googleapis|gstatic)|https?:\/\/[^"']+\.(?:woff2?|ttf)/i);
 });
