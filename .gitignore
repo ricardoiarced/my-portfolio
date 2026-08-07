@@ -5,3 +5,6 @@
 /lighthouse-report.*
 /playwright-report
 /test-results
+/.agents/
+/skills-lock.json
+/prototype.html

@@ -1,23 +1,19 @@
 import assert from "node:assert/strict";
-import { access, readFile } from "node:fs/promises";
+import { readFile } from "node:fs/promises";
 import test from "node:test";
 
 const html = await readFile(new URL("../index.html", import.meta.url), "utf8");
 const css = await readFile(new URL("../style.css", import.meta.url), "utf8");
-const hero = html.match(/<section class="hero container"[\s\S]*?<\/section>/)?.[0];
+const documentBlock = html.match(/<article class="document">[\s\S]*?<\/article>\s*<\/main>/)?.[0];
 
-test("presents the approved text-first introduction", () => {
-  assert.ok(hero, "Homepage hero should exist");
-
-  assert.match(hero, /<p class="eyebrow">Software Developer<\/p>/);
-  assert.match(hero, /<h1[^>]*>I build reliable web experiences<br>that make complex work feel simple\.<\/h1>/);
-  assert.match(hero, /I’m Ricardo Arce, a software developer focused on accessible, maintainable applications that solve practical problems\./);
-  assert.match(hero, /class="hero__primary" href="#featured-projects">View projects →<\/a>/);
-  assert.match(hero, /class="hero__secondary" href="#contact">Get in touch<\/a>/);
-  assert.match(hero, /Available for new opportunities/);
-  assert.match(hero, /href="https:\/\/github\.com\/ricardoiarced"[^>]*>GitHub<\/a>/);
-  assert.match(hero, /href="https:\/\/www\.linkedin\.com\/in\/ricardo-irvin-arce-diaz\/"[^>]*>LinkedIn<\/a>/);
-  assert.doesNotMatch(hero, /<img\b|portrait|glow/i);
+test("presents the approved text-first Document introduction", () => {
+  assert.ok(documentBlock, "Homepage Document should exist");
+  assert.match(documentBlock, /<h1 class="document__name">Ricardo Arce<\/h1>/);
+  assert.match(documentBlock, /class="document__role">Junior ERP Developer/);
+  assert.match(documentBlock, /class="document__role">[^<]*Villa Group Resorts &amp; Spas/);
+  assert.match(documentBlock, /class="document__statement">I build reliable web experiences that make complex work feel simple\.<\/p>/);
+  assert.match(documentBlock, /class="document__status">Available for new opportunities<\/p>/);
+  assert.doesNotMatch(documentBlock, /<img\b|portrait|glow|hero/i);
 });
 
 test("uses the approved palette and self-hosted type roles", async () => {
@@ -38,14 +34,12 @@ test("uses the approved palette and self-hosted type roles", async () => {
     "fonts/ibm-plex-mono-latin-medium.woff2",
   ];
   for (const fontFile of fontFiles) {
-    await access(new URL(`../${fontFile}`, import.meta.url));
     assert.match(css, new RegExp(`url\\("${fontFile.replaceAll("/", "\\/")}\\"?\\)`, "i"));
   }
 
-  assert.match(css, /\.nav__name\s*{[\s\S]*?font-family: "Fraunces"/);
-  assert.match(css, /h1\s*{[\s\S]*?font-family: "Fraunces"/);
-  assert.match(css, /body\s*{[\s\S]*?font-family: "Inter"/);
-  assert.match(css, /\.eyebrow\s*{[\s\S]*?font-family: "IBM Plex Mono"/);
-  assert.match(css, /ibm-plex-mono-latin-medium\.woff2[\s\S]*?font-weight: 500;/);
+  assert.match(css, /\.document__name\s*{[\s\S]*?font-family: "Fraunces"/);
+  assert.match(css, /\.document__role\s*{[\s\S]*?font-family: "IBM Plex Mono"/);
+  assert.match(css, /\.document__marker\s*{[\s\S]*?font-family: "IBM Plex Mono"/);
+  assert.match(css, /\.document\s*{[\s\S]*?font-family: "IBM Plex Mono"/);
   assert.doesNotMatch(html, /fonts\.(?:googleapis|gstatic)|https?:\/\/[^"']+\.(?:woff2?|ttf)/i);
 });

@@ -1,9 +1,3 @@
-@media (max-width: 64rem) {
-    h1 {
-        font-size: 2.5rem;
-    }
-}
-
 @media (max-width: 48rem) {
     :root {
         --header-height: 7.5rem;
@@ -25,68 +19,6 @@
         font-size: 0.78rem;
     }
 
-    .hero {
-        min-height: auto;
-        padding-block: 5rem 6rem;
-    }
-
-    h1 {
-        max-width: 20ch;
-        font-size: clamp(2.25rem, 10vw, 2.5rem);
-    }
-
-    .about-layout,
-    .contact-layout {
-        grid-template-columns: 1fr;
-    }
-
-    .work-container {
-        width: calc(100% - 40px);
-    }
-
-    .project-row {
-        grid-template-columns: 1fr;
-        gap: 1.25rem;
-        padding-block: 4rem;
-    }
-
-    .project-row__content {
-        grid-template-columns: 1fr;
-    }
-
-    .project-row h3 {
-        font-size: 1.625rem;
-    }
-
-    .project-row__stack,
-    .project-row__link {
-        grid-column: 1;
-        grid-row: auto;
-    }
-
-    .project-row__stack {
-        margin-top: 1.75rem;
-        margin-bottom: 1rem;
-    }
-
-    .experience-item__header,
-    .experience-item__body {
-        grid-template-columns: 1fr;
-        gap: 1.25rem;
-    }
-
-    .experience-item__body {
-        margin-top: 1.5rem;
-    }
-
-    .experience-item__summary {
-        max-width: 42rem;
-    }
-
-    .skills-grid {
-        grid-template-columns: 1fr;
-    }
-
     .case-study {
         width: calc(100% - 40px);
     }
@@ -101,14 +33,14 @@
         justify-content: center;
         padding-block: 1.5rem;
     }
+
+    .document {
+        width: min(48rem, calc(100% - 32px));
+    }
 }
 
 @media (max-width: 30rem) {
     .case-study {
-        width: calc(100% - 32px);
-    }
-
-    .work-container {
         width: calc(100% - 32px);
     }
 
@@ -125,7 +57,18 @@
         font-size: 0.72rem;
     }
 
-    .button {
-        width: 100%;
+    .project {
+        grid-template-columns: 2.5rem minmax(0, 1fr);
+        gap: 0.75rem;
+    }
+
+    .job__head {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.35rem;
+    }
+
+    .contact-list__label {
+        width: 4.5rem;
     }
 }

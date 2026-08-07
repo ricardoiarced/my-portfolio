@@ -8,8 +8,8 @@ After GitHub Pages reports a successful deployment, run `npm run verify:producti
 
 The release check and source review cover:
 
-- A skip link, one `main` landmark, labeled primary navigation, and a footer landmark.
-- One `h1` and a heading hierarchy without skipped levels.
+- A skip link, one `main` landmark, labeled primary navigation, and a footer landmark on the case-study pages (the homepage Document deliberately ships without nav or footer chrome, per ADR 0001).
+- One `h1` per page and a heading hierarchy without skipped levels.
 - Descriptive alternatives and intrinsic dimensions for every content image.
 - Visible `:focus-visible` treatment and keyboard access to the always-visible responsive navigation.
 - Text labels for navigation, contact, resume, and external-profile actions.

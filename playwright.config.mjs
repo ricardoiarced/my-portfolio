@@ -6,13 +6,13 @@ export default defineConfig({
   fullyParallel: true,
   reporter: "line",
   use: {
-    baseURL: "http://127.0.0.1:42731/my-portfolio/",
+    baseURL: "http://127.0.0.1:4173/my-portfolio/",
     browserName: "chromium",
     trace: "retain-on-failure",
   },
   webServer: {
-    command: "PORT=42731 node scripts/static-server.mjs",
-    url: "http://127.0.0.1:42731/my-portfolio/",
+    command: "node scripts/static-server.mjs",
+    url: "http://127.0.0.1:4173/my-portfolio/",
     reuseExistingServer: false,
   },
 });

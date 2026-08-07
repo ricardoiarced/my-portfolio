@@ -53,8 +53,8 @@
             ],
             "address": {
                 "@type": "PostalAddress",
-                "addressLocality": "Hermosillo",
-                "addressRegion": "Sonora",
+                "addressLocality": "Puerto Vallarta",
+                "addressRegion": "Jalisco",
                 "addressCountry": "MX"
             }
         }
@@ -64,235 +64,133 @@
 <body id="top">
     <a class="skip-link" href="#main-content">Skip to content</a>
 
-    <header class="site-header">
-        <nav class="nav container" aria-label="Primary navigation">
-            <a class="nav__name" href="#top" aria-label="Ricardo Arce, back to top" aria-current="location">Ricardo Arce</a>
-            <ul class="nav__links" id="primary-navigation">
-                <li><a class="nav__link" href="#featured-projects">Work</a></li>
-                <li><a class="nav__link" href="#contact">Contact</a></li>
-            </ul>
-        </nav>
-    </header>
-
     <main id="main-content" tabindex="-1">
-        <section class="hero container" aria-labelledby="hero-title">
-            <div class="hero-content">
-                <p class="eyebrow">Software Developer</p>
-                <h1 id="hero-title">I build reliable web experiences<br>that make complex work feel simple.</h1>
-                <p class="hero__summary">I’m Ricardo Arce, a software developer focused on accessible, maintainable applications that solve practical problems.</p>
+        <article class="document">
 
-                <div class="hero__actions" aria-label="Introduction links">
-                    <a class="hero__primary" href="#featured-projects">View projects →</a>
-                    <a class="hero__secondary" href="#contact">Get in touch</a>
-                </div>
+            <header class="document__title">
+                <h1 class="document__name">Ricardo Arce</h1>
+                <p class="document__role">Junior ERP Developer — Villa Group Resorts &amp; Spas — Puerto Vallarta, Jalisco</p>
+                <p class="document__statement">I build reliable web experiences that make complex work feel simple.</p>
+            </header>
 
-            </div>
+            <section class="document__section" id="featured-projects" aria-labelledby="featured-projects-title">
+                <hr class="document__rule" aria-hidden="true">
+                <p class="document__marker" id="featured-projects-title">Work</p>
 
-            <div class="hero-footer">
-                <p class="hero__availability"><span aria-hidden="true"></span>Available for new opportunities</p>
-                <ul class="hero__socials" aria-label="Social profiles">
-                    <li>
-                        <a href="https://github.com/ricardoiarced" target="_blank" rel="noopener noreferrer">GitHub</a>
-                    </li>
-                    <li>
-                        <a href="https://www.linkedin.com/in/ricardo-irvin-arce-diaz/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-                    </li>
-                </ul>
-            </div>
-        </section>
-
-        <section class="work-section" id="featured-projects" aria-labelledby="projects-title">
-            <div class="work-container">
-                <h2 id="projects-title">Work</h2>
-                <div class="projects-list">
-                    <article class="project-row" aria-labelledby="personal-finance-title">
-                        <p class="project-row__number" aria-hidden="true">01</p>
-                        <div class="project-row__content">
-                            <h3 id="personal-finance-title">Personal Finance Tracker</h3>
-                            <p class="project-row__description">A private workspace for cash flow, budgets, savings goals, and investments.</p>
-                            <p class="project-row__stack">Next.js · TypeScript · Tailwind · PostgreSQL</p>
-                            <a class="project-row__link" href="projects/personal-finance.html">View project →</a>
-                        </div>
-                    </article>
-
-                    <article class="project-row" aria-labelledby="local-notes-title">
-                        <p class="project-row__number" aria-hidden="true">02</p>
-                        <div class="project-row__content">
-                            <h3 id="local-notes-title">Local Notes</h3>
-                            <p class="project-row__description">A desktop writing space that keeps Markdown files as the durable source of truth.</p>
-                            <p class="project-row__stack">Electron · TypeScript · CodeMirror · Node.js</p>
-                            <a class="project-row__link" href="projects/local-notes.html">View project →</a>
-                        </div>
-                    </article>
-
-                    <article class="project-row" aria-labelledby="pomodoro-title">
-                        <p class="project-row__number" aria-hidden="true">03</p>
-                        <div class="project-row__content">
-                            <h3 id="pomodoro-title">Pomodoro Timer</h3>
-                            <p class="project-row__description">A reliable interval timer with configurable sessions, breaks, and persistent state.</p>
-                            <p class="project-row__stack">React · TypeScript · Vite · Web Audio API</p>
-                            <a class="project-row__link" href="projects/pomodoro-timer.html">View project →</a>
-                        </div>
-                    </article>
-                </div>
-            </div>
-        </section>
-
-        <section class="section section--bordered" id="experience" aria-labelledby="experience-title">
-            <div class="container">
-                <p class="eyebrow">Professional Experience</p>
-                <h2 id="experience-title">Experience</h2>
-                <p class="section__intro">Professional work across web platforms, system integrations, and industrial automation, focused on making operational tools more reliable and useful.</p>
-
-                <div class="experience-list">
-                    <article class="experience-item">
-                        <header class="experience-item__header">
-                            <div>
-                                <p class="experience-item__organization">Beracah Médica</p>
-                                <h3>Software Engineer</h3>
-                            </div>
-                            <p class="experience-item__meta"><time datetime="2023-10">Oct 2023</time> – Present <span>/</span> Hermosillo, Sonora</p>
-                        </header>
-                        <div class="experience-item__body">
-                            <p class="experience-item__summary">Develop and integrate commerce systems that support the company’s day-to-day sales, pricing, and product operations.</p>
-                            <ul class="experience-item__achievements">
-                                <li>Adapted Odoo’s checkout flow to the company’s operating model and customized the storefront to support its brand and customer experience.</li>
-                                <li>Built Odoo modules that update product fields from spreadsheet data and streamline internal workflows.</li>
-                                <li>Contributed to the Magento 2 to Odoo Enterprise migration, mapping 301 redirects to preserve existing routes and search traffic.</li>
-                                <li>Integrated a serverless AWS API with Odoo to retrieve exchange rates and deliver updates through Slack.</li>
-                            </ul>
-                        </div>
-                    </article>
-
-                    <article class="experience-item">
-                        <header class="experience-item__header">
-                            <div>
-                                <p class="experience-item__organization">Coinsamatik</p>
-                                <h3>Application Engineer</h3>
-                            </div>
-                            <p class="experience-item__meta"><time datetime="2021-09">Sep 2021</time> – <time datetime="2023-06">Jun 2023</time> <span>/</span> Hermosillo, Sonora</p>
-                        </header>
-                        <div class="experience-item__body">
-                            <p class="experience-item__summary">Programmed and commissioned industrial control applications that connected equipment, operator interfaces, and production data.</p>
-                            <ul class="experience-item__achievements">
-                                <li>Built a C++ application that used a PLC, HMI, and flowmeter to create production files and send their data to a server.</li>
-                                <li>Helped install, program, and commission 30 variable frequency drives controlled through an HMI for a fish cooker.</li>
-                                <li>Developed a PLC and HMI totalizer application to visualize flowmeter data from a pipeline.</li>
-                                <li>Installed and configured a drive with PID control to regulate pressure in a golf-course irrigation pipeline.</li>
-                            </ul>
-                        </div>
-                    </article>
-                </div>
-            </div>
-        </section>
-
-        <section class="section section--bordered" id="skills" aria-labelledby="skills-title">
-            <div class="container">
-                <p class="eyebrow">Demonstrated Capabilities</p>
-                <h2 id="skills-title">Skills &amp; Technologies</h2>
-                <p class="section__intro">Tools and practices used in professional work and the selected projects above, grouped by the problems they help solve.</p>
-
-                <div class="skills-grid">
-                    <article class="skill-group">
-                        <h3>Product &amp; interface</h3>
-                        <ul>
-                            <li>React</li>
-                            <li>Next.js</li>
-                            <li>Electron</li>
-                            <li>HTML</li>
-                            <li>CSS</li>
-                            <li>Accessibility</li>
-                        </ul>
-                    </article>
-                    <article class="skill-group">
-                        <h3>Application &amp; data</h3>
-                        <ul>
-                            <li>Python</li>
-                            <li>TypeScript</li>
-                            <li>JavaScript</li>
-                            <li>Node.js</li>
-                            <li>PostgreSQL</li>
-                            <li>Supabase</li>
-                        </ul>
-                    </article>
-                    <article class="skill-group">
-                        <h3>Platforms, delivery &amp; verification</h3>
-                        <ul>
-                            <li>Odoo</li>
-                            <li>Magento 2</li>
-                            <li>AWS</li>
-                            <li>Docker</li>
-                            <li>Git</li>
-                            <li>GitHub Actions</li>
-                            <li>Vitest</li>
-                            <li>Playwright</li>
-                        </ul>
-                    </article>
-                    <article class="skill-group">
-                        <h3>Industrial systems</h3>
-                        <ul>
-                            <li>C++</li>
-                            <li>PLCs</li>
-                            <li>HMIs</li>
-                            <li>Variable frequency drives</li>
-                            <li>PID control</li>
-                        </ul>
-                    </article>
-                </div>
-            </div>
-        </section>
-
-        <section class="section section--bordered" id="about" aria-labelledby="about-title">
-            <div class="container about-layout">
-                <div>
-                    <p class="eyebrow">A Little More About Me</p>
-                    <h2 id="about-title">About Me</h2>
-                </div>
-                <div class="about-copy">
-                    <p>I’m a software developer and mechatronics engineer based in Hermosillo, Sonora. I enjoy turning complex workflows into clear, user-focused applications.</p>
-                    <p>My work spans web development, systems integration, and industrial automation. I approach each project with practical problem-solving, continuous learning, and a focus on reliable software that people can understand and maintain.</p>
-                </div>
-            </div>
-        </section>
-
-        <section class="section section--bordered contact" id="contact" aria-labelledby="contact-title">
-            <div class="container contact-layout">
-                <div class="contact__message">
-                    <p class="eyebrow">Start a Conversation</p>
-                    <h2 id="contact-title">Let’s Work Together</h2>
-                    <p>Have a project, product challenge, or role where thoughtful software can make a difference? I’d be glad to hear about it.</p>
-                </div>
-
-                <div class="contact__actions" aria-label="Contact options">
-                    <div class="contact__email">
-                        <span>Email</span>
-                        <a href="mailto:ricardoiarced@gmail.com">ricardoiarced@gmail.com</a>
+                <article class="project">
+                    <p class="project__number" aria-hidden="true">[01]</p>
+                    <div class="project__body">
+                        <h2 class="project__title">Personal Finance Tracker</h2>
+                        <p class="project__description">A private workspace for cash flow, budgets, savings goals, and investments.</p>
+                        <p class="project__stack">Next.js · TypeScript · Tailwind · PostgreSQL</p>
+                        <a class="project__link" href="projects/personal-finance.html">View project →</a>
                     </div>
-                    <ul class="contact__links">
-                        <li>
-                            <a class="button button--primary" href="mailto:ricardoiarced@gmail.com">Email Ricardo</a>
-                        </li>
-                        <li>
-                            <a class="button button--secondary" href="https://www.linkedin.com/in/ricardo-irvin-arce-diaz/" target="_blank" rel="noopener noreferrer">Connect with Ricardo on LinkedIn</a>
-                        </li>
-                        <li>
-                            <a class="button button--secondary" href="https://github.com/ricardoiarced" target="_blank" rel="noopener noreferrer">View Ricardo’s GitHub profile</a>
-                        </li>
-                        <li>
-                            <a class="button button--secondary" href="assets/CV_ARCE_DIAZ_RICARDO_IRVIN.pdf" download>Download Ricardo Arce’s résumé (PDF)</a>
-                        </li>
+                </article>
+
+                <article class="project">
+                    <p class="project__number" aria-hidden="true">[02]</p>
+                    <div class="project__body">
+                        <h2 class="project__title">Local Notes</h2>
+                        <p class="project__description">A desktop writing space that keeps Markdown files as the durable source of truth.</p>
+                        <p class="project__stack">Electron · TypeScript · CodeMirror · Node.js</p>
+                        <a class="project__link" href="projects/local-notes.html">View project →</a>
+                    </div>
+                </article>
+
+                <article class="project">
+                    <p class="project__number" aria-hidden="true">[03]</p>
+                    <div class="project__body">
+                        <h2 class="project__title">Pomodoro Timer</h2>
+                        <p class="project__description">A reliable interval timer with configurable sessions, breaks, and persistent state.</p>
+                        <p class="project__stack">React · TypeScript · Vite · Web Audio API</p>
+                        <a class="project__link" href="projects/pomodoro-timer.html">View project →</a>
+                    </div>
+                </article>
+            </section>
+
+            <section class="document__section" id="experience" aria-labelledby="experience-title">
+                <hr class="document__rule" aria-hidden="true">
+                <p class="document__marker" id="experience-title">Experience</p>
+
+                <article class="job">
+                    <header class="job__head">
+                        <div class="job__heading">
+                            <h2 class="job__title">Junior ERP Developer</h2>
+                            <p class="job__org">Villa Group Resorts &amp; Spas</p>
+                        </div>
+                        <p class="job__dates">Aug 2025 – Present</p>
+                    </header>
+                    <ul class="job__bullets">
+                        <li>Replaced a legacy maintenance system by adapting and migrating custom Odoo Enterprise code (v17 to v19), delivering a modernized platform for 15 active users across 7 hotel properties in Cabo San Lucas and the Riviera Nayarit region.</li>
+                        <li>Co-engineering an Odoo v19 solution (Purchasing, Inventory, Accounting) in a two-developer team to replace an outdated supplier management platform, currently preparing for a pilot rollout.</li>
                     </ul>
+                </article>
+
+                <article class="job">
+                    <header class="job__head">
+                        <div class="job__heading">
+                            <h2 class="job__title">Junior Software Engineer</h2>
+                            <p class="job__org">Beracah Médica</p>
+                        </div>
+                        <p class="job__dates">Oct 2023 – Aug 2025</p>
+                    </header>
+                    <ul class="job__bullets">
+                        <li>Modified Odoo’s native checkout process to align with the company’s business model and storefront branding.</li>
+                        <li>Developed a custom Odoo module automating product-field updates from spreadsheet data.</li>
+                        <li>Contributed to the Magento 2 → Odoo Enterprise migration with 301 redirects that preserved routes and search traffic.</li>
+                    </ul>
+                </article>
+
+                <article class="job">
+                    <header class="job__head">
+                        <div class="job__heading">
+                            <h2 class="job__title">Application Engineer</h2>
+                            <p class="job__org">Coinsamatik</p>
+                        </div>
+                        <p class="job__dates">Sep 2021 – Jun 2023</p>
+                    </header>
+                    <ul class="job__bullets">
+                        <li>Built a C++ application that used a PLC, an HMI, and a flowmeter to create production files and send their data to a server.</li>
+                        <li>Developed a PLC- and HMI-based totalizer that visualizes flowmeter data from a pipeline.</li>
+                        <li>Configured a drive with PID control to regulate pressure in a golf-course irrigation pipeline.</li>
+                    </ul>
+                </article>
+            </section>
+
+            <section class="document__section" id="skills" aria-labelledby="skills-title">
+                <hr class="document__rule" aria-hidden="true">
+                <p class="document__marker" id="skills-title">Skills</p>
+
+                <p class="skill-line"><span class="skill-line__label">Product &amp; interface</span> React · Next.js · Electron · HTML · CSS · Accessibility</p>
+                <p class="skill-line"><span class="skill-line__label">Application &amp; data</span> Python · TypeScript · JavaScript · Node.js · PostgreSQL · Supabase</p>
+                <p class="skill-line"><span class="skill-line__label">Platforms &amp; delivery</span> Odoo · Magento 2 · AWS · Docker · Git · GitHub Actions · Vitest · Playwright</p>
+                <p class="skill-line"><span class="skill-line__label">Industrial</span> C++ · PLCs · HMIs · Variable frequency drives · PID control</p>
+            </section>
+
+            <section class="document__section" id="about" aria-labelledby="about-title">
+                <hr class="document__rule" aria-hidden="true">
+                <p class="document__marker" id="about-title">About</p>
+                <div class="about-copy">
+                    <p>Software developer focused on clear, user-focused applications that make operational software feel simple to the people who use it.</p>
+                    <p>My work today is built around the Odoo ecosystem and web development, with roots that span systems integration and industrial control — always practical, always maintainable.</p>
                 </div>
-            </div>
-        </section>
+            </section>
+
+            <section class="document__section" id="contact" aria-labelledby="contact-title">
+                <hr class="document__rule" aria-hidden="true">
+                <p class="document__marker" id="contact-title">Contact</p>
+                <p class="document__status">Available for new opportunities</p>
+                <ul class="contact-list">
+                    <li><span class="contact-list__label">email</span> <a class="contact-list__value" href="mailto:ricardoiarced@gmail.com">ricardoiarced@gmail.com</a></li>
+                    <li><span class="contact-list__label">github</span> <a class="contact-list__value" href="https://github.com/ricardoiarced" target="_blank" rel="noopener noreferrer">github.com/ricardoiarced</a></li>
+                    <li><span class="contact-list__label">linkedin</span> <a class="contact-list__value" href="https://www.linkedin.com/in/ricardo-irvin-arce-diaz/" target="_blank" rel="noopener noreferrer">linkedin.com/in/ricardo-irvin-arce-diaz</a></li>
+                    <li><span class="contact-list__label">cv</span> <a class="contact-list__value" href="assets/CV_ARCE_DIAZ_RICARDO_IRVIN.pdf" download>Download résumé (PDF)</a></li>
+                </ul>
+            </section>
+
+        </article>
     </main>
 
-    <footer>
-        <div class="footer-container container">
-            <p>&copy; <time datetime="2026">2026</time> Ricardo Arce.</p>
-            <p>Built and deployed with GitHub Pages.</p>
-        </div>
-    </footer>
     <script src="script.js" defer></script>
 </body>
 

@@ -4,62 +4,51 @@ import test from "node:test";
 
 const html = await readFile(new URL("../index.html", import.meta.url), "utf8");
 const experienceAndSkills = html.match(
-  /<section[^>]+id="experience"[\s\S]*?<section[^>]+id="skills"[\s\S]*?<\/section>/,
+  /<section class="document__section" id="experience"[\s\S]*?<section class="document__section" id="about"/,
 )?.[0];
 
-test("presents both resume-backed roles with concise evidence", () => {
-  assert.ok(experienceAndSkills, "Experience should be followed by Skills & Technologies");
+test("presents three resume-backed roles with concise evidence", () => {
+  assert.ok(experienceAndSkills, "Experience should be followed by Skills");
 
-  const roles = [...experienceAndSkills.matchAll(/<article class="experience-item"[\s\S]*?<\/article>/g)];
-  assert.equal(roles.length, 2);
+  const jobs = [...experienceAndSkills.matchAll(/<article class="job"[\s\S]*?<\/article>/g)].map(([entry]) => entry);
+  assert.equal(jobs.length, 3);
 
-  const expectedRoles = [
+  const expected = [
     {
-      details: ["Software Engineer", "Beracah Médica", "Oct 2023 – Present", "Hermosillo, Sonora"],
-      evidence: ["Odoo", "spreadsheet", "301 redirects", "AWS API"],
+      details: ["Junior ERP Developer", "Villa Group Resorts &amp; Spas", "Aug 2025 – Present"],
+      evidence: ["Odoo", "v17 to v19", "7 hotel properties"],
     },
     {
-      details: ["Application Engineer", "Coinsamatik", "Sep 2021 – Jun 2023", "Hermosillo, Sonora"],
-      evidence: ["C\\+\\+", "30 variable frequency drives", "totalizer", "PID control"],
+      details: ["Junior Software Engineer", "Beracah Médica", "Oct 2023 – Aug 2025"],
+      evidence: ["checkout", "spreadsheet", "301 redirects"],
+    },
+    {
+      details: ["Application Engineer", "Coinsamatik", "Sep 2021 – Jun 2023"],
+      evidence: ["C\\+\\+", "totalizer", "PID control"],
     },
   ];
 
-  for (const [index, expected] of expectedRoles.entries()) {
-    const role = roles[index][0];
-    const roleText = role.replace(/<[^>]+>/g, " ").replace(/\s+/g, " ");
-    for (const detail of expected.details) assert.match(roleText, new RegExp(detail));
-    assert.match(role, /<p class="experience-item__summary">[^<]+<\/p>/);
+  for (const [index, expectations] of expected.entries()) {
+    const job = jobs[index];
+    for (const detail of expectations.details) assert.match(job, new RegExp(detail));
 
-    const achievements = [...role.matchAll(/<li>([^<]+)<\/li>/g)].map(([, achievement]) => achievement);
-    assert.ok(achievements.length >= 2 && achievements.length <= 4);
-    for (const evidence of expected.evidence) {
-      assert.match(achievements.join(" "), new RegExp(evidence));
+    const bullets = [...job.matchAll(/<li>([^<]+)<\/li>/g)].map(([, bullet]) => bullet);
+    assert.ok(bullets.length >= 2 && bullets.length <= 3);
+    for (const evidence of expectations.evidence) {
+      assert.match(bullets.join(" "), new RegExp(evidence));
     }
   }
 });
 
-test("groups verified skills by purpose without proficiency ratings", () => {
-  assert.ok(experienceAndSkills, "Skills & Technologies section should exist");
-  assert.match(experienceAndSkills, /<h2[^>]*>Skills &amp; Technologies<\/h2>/);
+test("groups verified skills by focus without proficiency ratings", () => {
+  assert.ok(experienceAndSkills, "Skills section should exist");
 
-  const groups = [...experienceAndSkills.matchAll(/<article class="skill-group"[\s\S]*?<\/article>/g)].map(
-    ([group]) => group,
-  );
-  assert.equal(groups.length, 4);
+  const lines = [...experienceAndSkills.matchAll(/<p class="skill-line"[\s\S]*?<\/p>/g)].map(([line]) => line);
+  assert.equal(lines.length, 4);
 
-  const expectedGroups = [
-    ["Product &amp; interface", ["React", "Next.js", "Electron", "HTML", "CSS", "Accessibility"]],
-    ["Application &amp; data", ["Python", "TypeScript", "JavaScript", "Node.js", "PostgreSQL", "Supabase"]],
-    ["Platforms, delivery &amp; verification", ["Odoo", "Magento 2", "AWS", "Docker", "Git", "GitHub Actions", "Vitest", "Playwright"]],
-    ["Industrial systems", ["C++", "PLCs", "HMIs", "Variable frequency drives", "PID control"]],
-  ];
-
-  for (const [index, [heading, skills]] of expectedGroups.entries()) {
-    assert.match(groups[index], new RegExp(`<h3>${heading}</h3>`));
-    assert.deepEqual(
-      [...groups[index].matchAll(/<li>([^<]+)<\/li>/g)].map(([, skill]) => skill),
-      skills,
-    );
+  const expectedLabels = ["Product &amp; interface", "Application &amp; data", "Platforms &amp; delivery", "Industrial"];
+  for (const [index, label] of expectedLabels.entries()) {
+    assert.match(lines[index], new RegExp(`class="skill-line__label">${label}<`));
   }
 
   assert.doesNotMatch(experienceAndSkills, /<progress|aria-valuenow|\b(?:beginner|intermediate|expert)\b/i);
