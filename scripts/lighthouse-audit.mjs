@@ -35,6 +35,6 @@ try {
   }
   if (failures.length) throw new Error(failures.join("\n"));
 } finally {
-  await chrome?.kill();
+  chrome?.kill();
   await new Promise((resolve) => server.close(resolve));
 }
