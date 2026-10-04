@@ -1,0 +1,74 @@
+@media (max-width: 48rem) {
+    :root {
+        --header-height: 7.5rem;
+    }
+
+    .nav {
+        align-items: flex-start;
+        flex-direction: column;
+        justify-content: center;
+        gap: 0.25rem;
+        padding-block: 0.75rem;
+    }
+
+    .nav__links {
+        gap: 0.8rem;
+    }
+
+    .nav__link {
+        font-size: 0.78rem;
+    }
+
+    .case-study {
+        width: calc(100% - 40px);
+    }
+
+    .case-study__body {
+        grid-template-columns: 1fr;
+    }
+
+    .footer-container {
+        align-items: flex-start;
+        flex-direction: column;
+        justify-content: center;
+        padding-block: 1.5rem;
+    }
+
+    .document {
+        width: min(48rem, calc(100% - 32px));
+    }
+}
+
+@media (max-width: 30rem) {
+    .case-study {
+        width: calc(100% - 32px);
+    }
+
+    .nav__name {
+        font-size: 1rem;
+    }
+
+    .nav__links {
+        gap: 0.6rem;
+    }
+
+    .nav__link {
+        min-height: 2.75rem;
+        font-size: 0.72rem;
+    }
+
+    .project {
+        grid-template-columns: 2.5rem minmax(0, 1fr);
+        gap: 0.75rem;
+    }
+
+    .job__head {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.35rem;
+    }
+
+    .contact-list__label {
+        width: 4.5rem;
+    }
+}
