@@ -2,8 +2,8 @@ import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
 import test from "node:test";
 
-const html = await readFile(new URL("../index.html", import.meta.url), "utf8");
-const css = await readFile(new URL("../style.css", import.meta.url), "utf8");
+const html = await readFile(new URL("../dist/index.html", import.meta.url), "utf8");
+const css = await readFile(new URL("../dist/style.css", import.meta.url), "utf8");
 const documentBlock = html.match(/<article class="document">[\s\S]*?<\/article>\s*<\/main>/)?.[0];
 
 test("presents the approved text-first Document introduction", () => {

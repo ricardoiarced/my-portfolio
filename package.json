@@ -4,8 +4,10 @@
   "description": "Ricardo Arce's software development portfolio",
   "source": "index.html",
   "scripts": {
+    "dev": "astro dev",
     "start": "node scripts/static-server.mjs",
-    "build": "parcel build --public-url ./",
+    "build": "astro build",
+    "preview": "astro preview",
     "check": "node --check script.js && node --check scripts/*.mjs && node --check tests/*.mjs",
     "check:astro": "astro check",
     "test": "node --test tests/*.test.mjs",
@@ -13,10 +15,7 @@
     "test:browser": "playwright test tests/release-browser.spec.mjs",
     "audit:lighthouse": "node scripts/lighthouse-audit.mjs",
     "release:check": "npm test && npm run check && npm run test:links && npm run test:browser && npm run audit:lighthouse",
-    "verify:production": "node scripts/verify-production.mjs",
-    "dev:astro": "astro dev",
-    "build:astro": "astro build",
-    "preview:astro": "astro preview"
+    "verify:production": "node scripts/verify-production.mjs"
   },
   "repository": {
     "type": "git",

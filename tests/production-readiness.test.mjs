@@ -2,7 +2,7 @@ import assert from "node:assert/strict";
 import { access, readFile, stat } from "node:fs/promises";
 import test from "node:test";
 
-const root = new URL("../", import.meta.url);
+const root = new URL("../dist/", import.meta.url);
 const html = await readFile(new URL("index.html", root), "utf8");
 const projectPages = await Promise.all([
   "projects/personal-finance.html",
@@ -28,8 +28,8 @@ test("publishes complete canonical and social metadata", () => {
   assert.match(head, /<meta property="og:image:height" content="630">/);
   assert.match(head, /<meta property="og:image:alt" content="[^"]+">/);
   assert.match(head, /<meta name="twitter:card" content="summary_large_image">/);
-  assert.match(head, /<link rel="apple-touch-icon" href="img\/apple-touch-icon\.png">/);
-  assert.match(head, /<link rel="manifest" href="site\.webmanifest">/);
+  assert.match(head, /<link rel="apple-touch-icon" href="\/my-portfolio\/img\/apple-touch-icon\.png">/);
+  assert.match(head, /<link rel="manifest" href="\/my-portfolio\/site\.webmanifest">/);
 });
 
 test("describes Ricardo with valid Person structured data", () => {
@@ -54,12 +54,18 @@ test("uses deploy-safe links and references assets that exist", async () => {
   );
   const ids = new Set([...html.matchAll(/\bid="([^"]+)"/g)].map(([, id]) => id));
 
+  const basePath = "/my-portfolio/";
+
   for (const reference of attributes) {
-    assert.doesNotMatch(reference, /^\/(?!\/)/, `${reference} assumes a domain-root deployment`);
     if (reference.startsWith("#")) {
       assert.ok(ids.has(reference.slice(1)), `${reference} should target an existing id`);
     } else if (!/^(?:https?:|mailto:)/.test(reference)) {
-      await access(new URL(reference, root));
+      const outputPath = reference.startsWith(basePath)
+      ? reference.slice(basePath.length)
+      : reference;
+
+      assert.doesNotMatch(outputPath, /^\//, `${reference} is outside the site base path`);
+      await access(new URL(outputPath || "index.html", root));
     }
   }
 });

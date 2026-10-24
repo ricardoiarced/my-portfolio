@@ -2,7 +2,7 @@ import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
 import test from "node:test";
 
-const html = await readFile(new URL("../index.html", import.meta.url), "utf8");
+const html = await readFile(new URL("../dist/index.html", import.meta.url), "utf8");
 
 test("introduces Ricardo with a concise About narrative without header/footer chrome", () => {
   const about = html.match(/<section class="document__section" id="about"[\s\S]*?<\/section>/)?.[0];
@@ -29,7 +29,7 @@ test("offers direct contact and a downloadable resume without a form", async () 
   assert.doesNotMatch(contact, /<form\b/i);
 
   const resume = await readFile(
-    new URL("../assets/CV_ARCE_DIAZ_RICARDO_IRVIN.pdf", import.meta.url),
+    new URL("../dist/assets/CV_ARCE_DIAZ_RICARDO_IRVIN.pdf", import.meta.url),
   );
   assert.equal(resume.subarray(0, 4).toString(), "%PDF");
 });

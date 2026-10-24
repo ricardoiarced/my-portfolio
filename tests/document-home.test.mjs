@@ -2,7 +2,7 @@ import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
 import test from "node:test";
 
-const html = await readFile(new URL("../index.html", import.meta.url), "utf8");
+const html = await readFile(new URL("../dist/index.html", import.meta.url), "utf8");
 
 test("hosts the homepage document without header or footer chrome", () => {
   assert.ok(html.includes('<a class="skip-link" href="#main-content">'));
@@ -27,5 +27,5 @@ test("keeps section anchors that case studies and links rely on", () => {
 });
 
 test("includes the homepage script without coupling to a nav", () => {
-  assert.match(html, /<script src="script\.js" defer><\/script>/);
+  assert.match(html, /<script src="[^"]*script\.js"><\/script>/);
 });
