@@ -4,7 +4,7 @@ import { createServer } from "node:http";
 import { extname, resolve, sep } from "node:path";
 import { fileURLToPath, pathToFileURL } from "node:url";
 
-const root = resolve(fileURLToPath(new URL("../", import.meta.url)));
+const root = resolve(fileURLToPath(new URL("../dist", import.meta.url)));
 const basePath = "/my-portfolio/";
 const mimeTypes = {
   ".css": "text/css; charset=utf-8",

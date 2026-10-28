@@ -1,6 +1,9 @@
 /node_modules
 /dist
-.parcel-cache
+/.astro/
+/.env
+/.env.*
+!/.env.example
 /*lighthouse*/
 /lighthouse-report.*
 /playwright-report

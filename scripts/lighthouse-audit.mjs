@@ -1,3 +1,4 @@
+import { existsSync } from "node:fs";
 import { chromium } from "@playwright/test";
 import { launch } from "chrome-launcher";
 import lighthouse from "lighthouse";
@@ -9,8 +10,9 @@ const server = await startStaticServer(port);
 let chrome;
 
 try {
+  const playwrightChromePath = chromium.executablePath();
   chrome = await launch({
-    chromePath: chromium.executablePath(),
+    chromePath: existsSync(playwrightChromePath) ? playwrightChromePath : undefined,
     chromeFlags: ["--headless", "--no-sandbox", "--disable-gpu"],
   });
   const result = await lighthouse(`http://127.0.0.1:${port}/my-portfolio/`, {
