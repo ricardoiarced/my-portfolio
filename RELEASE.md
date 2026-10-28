@@ -21,4 +21,4 @@ The site uses no form, tracking script, remote font request, icon library, SMTP 
 
 ## GitHub Pages
 
-The production source is `master` at the repository root. The public URL is `https://ricardoiarced.github.io/my-portfolio/`, and GitHub Pages must keep HTTPS enforcement enabled.
+The production site is built from `master` by `.github/workflows/deploy.yml` and published from Astro's `dist/` output. In GitHub Pages settings, select **GitHub Actions** as the build and deployment source. The public URL is `https://ricardoiarced.github.io/my-portfolio/`, and GitHub Pages must keep HTTPS enforcement enabled.
