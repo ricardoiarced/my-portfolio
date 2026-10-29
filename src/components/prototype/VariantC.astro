@@ -1,0 +1,25 @@
+---
+import { projects, experience, email, github, linkedin } from "./data";
+const { base } = Astro.props;
+---
+<div class="gallery-shell">
+  <header class="gallery-header"><a class="gallery-name" href="#top">Ricardo Arce<span>Software developer</span></a><nav aria-label="Main navigation"><a href="#featured-projects">Projects</a><a href="#experience">Experience</a><a href="#contact">Let’s talk <span aria-hidden="true">↗</span></a></nav></header>
+  <main id="main-content" tabindex="-1">
+    <header class="gallery-intro">
+      <div><p class="micro">Web applications &amp; business systems</p><h1>Less friction.<br /><span>Better software.</span></h1></div>
+      <div class="gallery-intro-note"><p>I’m Ricardo. I build practical digital tools, from everyday apps to the systems behind a business.</p><a class="text-link" href="#featured-projects">Explore my work <span aria-hidden="true">↓</span></a></div>
+    </header>
+    <section id="featured-projects" aria-labelledby="gallery-projects">
+      <div class="section-heading"><h2 id="gallery-projects">Selected projects</h2><span class="micro">A few things I’ve built</span></div>
+      <div class="project-gallery">{projects.map((project, index) => <a class:list={["gallery-project", { "gallery-featured": index === 0 }]} href={`${base}projects/${project.slug}.html`}>
+        <div class:list={["project-image", `project-image-${index}`]}><img src={`${base}img/${project.image}`} alt={project.alt} width={project.width} height={project.height} loading={index === 0 ? "eager" : "lazy"} /><span class="image-cta" aria-hidden="true">View project ↗</span></div>
+        <div class="gallery-project-meta"><h3>{project.title}</h3><span class="row-arrow" aria-hidden="true">↗</span></div><p>{project.description}</p><p class="stack">{project.stack}</p>
+      </a>)}</div>
+    </section>
+    <section class="gallery-experience" id="experience" aria-labelledby="gallery-experience">
+      <div class="gallery-experience-intro"><p class="micro">The work behind the work</p><h2 id="gallery-experience">Experience<span>.</span></h2><p>Building across web development, enterprise software, and systems integration.</p><a class="text-link" href={`${base}assets/CV_ARCE_DIAZ_RICARDO_IRVIN.pdf`} download>Download résumé <span aria-hidden="true">↓</span></a></div>
+      <div>{experience.map(job => <article class="gallery-job"><p class="micro">{job.dates}</p><h3>{job.role}</h3><p class="company">{job.company}</p><p class="job-description">{job.description}</p></article>)}</div>
+    </section>
+    <section class="gallery-contact" id="contact" aria-labelledby="gallery-contact"><p class="micro">Contact</p><h2 id="gallery-contact">Let’s make<br /><a href={`mailto:${email}`}>something useful<span aria-hidden="true">↗</span></a></h2><div class="gallery-contact-bottom"><a class="email-link" href={`mailto:${email}`}>{email}</a><div class="social-links"><a href={github} target="_blank" rel="noopener noreferrer">GitHub ↗</a><a href={linkedin} target="_blank" rel="noopener noreferrer">LinkedIn ↗</a></div></div></section>
+  </main>
+</div>
