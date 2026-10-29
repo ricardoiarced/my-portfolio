@@ -7,18 +7,21 @@ const { base } = Astro.props;
     <div>
       <a class="micro split-top" href="#top">Independent thinking. Practical software.</a>
       <h1>Ricardo<br />Arce<span>.</span></h1>
-      <p class="split-role">Software developer</p>
+      <p class="split-role">Software engineer</p>
       <p class="intro-copy">I connect the dots between business systems and the people who use them.</p>
       <nav class="split-nav" aria-label="Main navigation"><a href="#experience"><span>01</span> Experience</a><a href="#featured-projects"><span>02</span> Projects</a><a href="#contact"><span>03</span> Contact</a></nav>
     </div>
-    <div class="split-profile-bottom"><p class="micro">Based in Puerto Vallarta, Mexico</p><div class="social-links"><a href={github} target="_blank" rel="noopener noreferrer">GitHub ↗</a><a href={linkedin} target="_blank" rel="noopener noreferrer">LinkedIn ↗</a><a href={`${base}assets/CV_ARCE_DIAZ_RICARDO_IRVIN.pdf`} download>Résumé ↓</a></div></div>
+    <div class="split-profile-bottom"><p class="micro">Based in Hermosillo, Sonora, Mexico</p><div class="social-links"><a href={github} target="_blank" rel="noopener noreferrer">GitHub ↗</a><a href={linkedin} target="_blank" rel="noopener noreferrer">LinkedIn ↗</a><a href={`${base}assets/CV_ARCE_DIAZ_RICARDO_IRVIN.pdf`} download>Résumé ↓</a></div></div>
   </header>
   <main class="split-content" id="main-content" tabindex="-1">
     <section id="experience" aria-labelledby="split-experience">
       <div class="split-section-heading"><span class="micro">01 /</span><h2 id="split-experience">Experience</h2></div>
-      <div class="timeline">{experience.map((job, index) => <article class:list={["split-job", { "is-current": index === 0 }]}>
-        <p class="micro">{job.dates}{index === 0 && <span class="current-label">Current</span>}</p>
-        <h3>{job.role}</h3><p class="company">{job.company}</p><p class="job-description">{job.description}</p><p class="stack">{job.stack}</p>
+      <div class="timeline">{experience.map(job => <article class="split-job">
+        <p class="micro">{job.dates}</p>
+        <h3>{job.role}</h3><p class="company">{job.company}</p><p class="micro job-location">{job.location}</p><p class="job-description">{job.description}</p>
+        <ul class="experience-highlights">{job.highlights.map(highlight => <li>{highlight}</li>)}</ul>
+        {job.additional.length > 0 && <details class="experience-more"><summary aria-label={`More contributions at ${job.company}`}>More contributions</summary><ul class="experience-highlights">{job.additional.map(highlight => <li>{highlight}</li>)}</ul></details>}
+        <p class="stack experience-stack">{job.stack}</p>
       </article>)}</div>
     </section>
     <section class="split-section" id="featured-projects" aria-labelledby="split-projects">
