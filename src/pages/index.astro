@@ -1,15 +1,29 @@
 ---
-// Throwaway comparison on the existing homepage: ?variant=A|B|C.
-import DocumentHomepage from "../components/DocumentHomepage.astro";
-import PortfolioPrototype from "../components/prototype/PortfolioPrototype.astro";
+import Layout from "../layouts/Layout.astro";
+import Nav from "../components/Nav.astro";
+import Panel from "../components/Panel.astro";
+import About from "../components/sections/About.astro";
+import Experience from "../components/sections/Experience.astro";
+import Projects from "../components/sections/Projects.astro";
+import Contact from "../components/sections/Contact.astro";
+import { sections } from "../data/sections";
 
-const base = import.meta.env.BASE_URL.endsWith("/")
-  ? import.meta.env.BASE_URL
-  : `${import.meta.env.BASE_URL}/`;
-// Static Astro pages do not receive URL search params on the server.
-// In development the client selects the variant; builds use the real homepage.
-const showPrototype = import.meta.env.DEV;
-const Homepage = showPrototype ? PortfolioPrototype : DocumentHomepage;
+const base = import.meta.env.BASE_URL.endsWith("/") ? import.meta.env.BASE_URL : `${import.meta.env.BASE_URL}/`;
+const components = { about: About, experience: Experience, projects: Projects, contact: Contact };
 ---
-
-<Homepage base={base} />
+<Layout>
+  <header class="site-header">
+    <div class="quiet-header">
+      <a class="wordmark" href={`#${sections[0].id}`} aria-label="Ricardo Arce, About">ra<span>.</span></a>
+      <Nav />
+    </div>
+  </header>
+  <main id="main-content" class="viewport" tabindex="-1">
+    <div class="track">
+      {sections.map(section => {
+        const Content = components[section.id];
+        return <Panel id={section.id} label={section.label}><Content base={base} /></Panel>;
+      })}
+    </div>
+  </main>
+</Layout>

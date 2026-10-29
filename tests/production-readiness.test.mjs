@@ -12,15 +12,15 @@ const projectPages = await Promise.all([
 const head = html.match(/<head>[\s\S]*?<\/head>/)?.[0];
 const publicUrl = "https://ricardoiarced.github.io/my-portfolio/";
 const description =
-  "Ricardo Arce is a software developer focused on reliable, accessible, and maintainable web applications.";
+  "Ricardo Arce is a software engineer focused on reliable, accessible, and maintainable web applications.";
 
 test("publishes complete canonical and social metadata", () => {
   assert.ok(head, "Document head should exist");
-  assert.match(head, /<title>Ricardo Arce \| Software Developer<\/title>/);
+  assert.match(head, /<title>Ricardo Arce \| Software Engineer<\/title>/);
   assert.match(head, new RegExp(`<meta name="description" content="${description}">`));
   assert.match(head, new RegExp(`<link rel="canonical" href="${publicUrl}">`));
   assert.match(head, /<meta property="og:type" content="profile">/);
-  assert.match(head, /<meta property="og:title" content="Ricardo Arce \| Software Developer">/);
+  assert.match(head, /<meta property="og:title" content="Ricardo Arce \| Software Engineer">/);
   assert.match(head, new RegExp(`<meta property="og:description" content="${description}">`));
   assert.match(head, new RegExp(`<meta property="og:url" content="${publicUrl}">`));
   assert.match(head, /<meta property="og:image" content="https:\/\/ricardoiarced\.github\.io\/my-portfolio\/img\/social-preview\.jpg">/);
@@ -41,7 +41,9 @@ test("describes Ricardo with valid Person structured data", () => {
   assert.equal(person["@type"], "Person");
   assert.equal(person.name, "Ricardo Arce");
   assert.equal(person.url, publicUrl);
-  assert.equal(person.jobTitle, "Software Developer");
+  assert.equal(person.jobTitle, "Software Engineer");
+  assert.equal(person.address.addressLocality, "Hermosillo");
+  assert.equal(person.address.addressRegion, "Sonora");
   assert.deepEqual(person.sameAs, [
     "https://github.com/ricardoiarced",
     "https://www.linkedin.com/in/ricardo-irvin-arce-diaz/",
@@ -71,7 +73,7 @@ test("uses deploy-safe links and references assets that exist", async () => {
 });
 
 test("keeps homepage imagery-free and serves optimized case-study media", async () => {
-  const workSection = html.match(/<section[^>]+id="featured-projects"[\s\S]*?<\/section>/)?.[0];
+  const workSection = html.match(/<section[^>]+id="projects"[\s\S]*?<\/section>/)?.[0];
   assert.ok(workSection, "Work section should exist");
   assert.doesNotMatch(workSection, /<img\b/);
 

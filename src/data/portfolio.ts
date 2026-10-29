@@ -1,5 +1,4 @@
-// PROTOTYPE: projects from the portfolio; career facts reconciled with the
-// resume project's approved decisions, profile copy, and supporting evidence.
+// Reviewed portfolio copy; historical titles and delivery status are intentional.
 export const projects = [
   {
     title: "Personal Finance Tracker",

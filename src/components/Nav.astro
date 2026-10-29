@@ -1,0 +1,7 @@
+---
+import { sections } from "../data/sections";
+---
+<nav class="site-nav" aria-label="Sections">
+  {sections.map((section, index) => <a href={`#${section.id}`} aria-current={index === 0 ? "page" : undefined}>{section.label}</a>)}
+  <span class="nav-indicator" aria-hidden="true"></span>
+</nav>
