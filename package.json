@@ -7,7 +7,7 @@
     "start": "node scripts/static-server.mjs",
     "build": "astro build",
     "preview": "astro preview",
-    "check": "node --check scripts/*.mjs && node --check tests/*.mjs",
+    "check": "for file in scripts/*.mjs tests/*.mjs; do node --check \"$file\" || exit 1; done",
     "check:astro": "astro check",
     "test": "node --test tests/*.test.mjs",
     "test:links": "node scripts/check-external-links.mjs",
