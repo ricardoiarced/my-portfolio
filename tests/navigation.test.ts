@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import test from "node:test";
-import { html } from "./site-fixture.mjs";
+import { html } from "./site-fixture.ts";
 
 test("keeps navigation as real shareable section links in display order", () => {
   const nav = html.match(/<nav class="site-nav"[\s\S]*?<\/nav>/)?.[0];

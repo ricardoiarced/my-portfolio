@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import test from "node:test";
-import { html, panel } from "./site-fixture.mjs";
+import { html, panel } from "./site-fixture.ts";
 
 test("renders the complete portfolio in static HTML with one main landmark", () => {
   assert.equal([...html.matchAll(/<main\b/g)].length, 1);

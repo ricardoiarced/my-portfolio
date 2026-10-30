@@ -3,7 +3,7 @@ import { chromium } from "@playwright/test";
 import { launch } from "chrome-launcher";
 import lighthouse from "lighthouse";
 
-import { startStaticServer } from "./static-server.mjs";
+import { startStaticServer } from "./static-server.ts";
 
 const port = 42732;
 const server = await startStaticServer(port);
@@ -31,12 +31,14 @@ try {
   };
   const failures = [];
   for (const [category, minimum] of Object.entries(minimumScores)) {
-    const score = result.lhr.categories[category].score;
-    console.log(`${result.lhr.categories[category].title}: ${Math.round(score * 100)}`);
+    const report = result.lhr.categories[category];
+    const score = report.score;
+    if (score === null) throw new Error(`Lighthouse did not score ${category}`);
+    console.log(`${report.title}: ${Math.round(score * 100)}`);
     if (score < minimum) failures.push(`${category} scored ${score}, below ${minimum}`);
   }
   if (failures.length) throw new Error(failures.join("\n"));
 } finally {
-  chrome?.kill();
-  await new Promise((resolve) => server.close(resolve));
+  await chrome?.kill();
+  await new Promise<void>((resolve, reject) => server.close(error => error ? reject(error) : resolve()));
 }

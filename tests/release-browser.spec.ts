@@ -1,4 +1,4 @@
-import { devices, expect, test } from "@playwright/test";
+import { devices, expect, test, type Page } from "@playwright/test";
 
 const viewports = [
   { width: 1600, height: 900 },
@@ -8,7 +8,7 @@ const viewports = [
   { width: 640, height: 360 },
 ];
 
-async function activePanel(page, id) {
+async function activePanel(page: Page, id: string): Promise<void> {
   await expect(page.locator('.site-nav [aria-current="page"]')).toHaveAttribute("href", `#${id}`);
   await expect(page.locator(`#${id}`)).toHaveClass(/is-active/);
   await expect(page.locator(`#${id}`)).not.toHaveAttribute("inert", "");
@@ -94,16 +94,20 @@ for (const width of [1280, 390]) {
         const animations = document.getAnimations();
         animations.forEach(animation => {
           animation.pause();
+          if (!animation.effect) throw new Error("Animation should have an effect");
           animation.currentTime = Number(animation.effect.getTiming().duration) / 2;
         });
         const about = document.querySelector("#about");
         const experience = document.querySelector("#experience");
         const indicator = document.querySelector(".nav-indicator");
+        if (!about || !experience || !indicator) throw new Error("Navigation elements should exist");
+        const brightness = getComputedStyle(about).filter.match(/[\d.]+/);
+        if (!brightness) throw new Error("About panel should have a brightness filter");
         return {
-          durations: animations.map(animation => animation.effect.getTiming().duration),
+          durations: animations.map(animation => animation.effect?.getTiming().duration),
           aboutX: about.getBoundingClientRect().left,
           experienceX: experience.getBoundingClientRect().left,
-          aboutBrightness: parseFloat(getComputedStyle(about).filter.match(/[\d.]+/)[0]),
+          aboutBrightness: parseFloat(brightness[0]),
           above: Number(getComputedStyle(experience).zIndex) > Number(getComputedStyle(about).zIndex),
           indicatorProgress: new DOMMatrixReadOnly(getComputedStyle(indicator).transform).m41 / indicator.getBoundingClientRect().width,
         };
@@ -201,7 +205,9 @@ for (const viewport of viewports) {
     await page.locator("#experience .quiet-job").last().scrollIntoViewIfNeeded();
     await expect(page.locator("#experience .quiet-job").last()).toBeInViewport();
     for (const link of await page.locator(".site-nav a").all()) {
-      expect((await link.boundingBox()).height).toBeGreaterThanOrEqual(44);
+      const bounds = await link.boundingBox();
+      expect(bounds).not.toBeNull();
+      expect(bounds?.height).toBeGreaterThanOrEqual(44);
     }
   });
 }

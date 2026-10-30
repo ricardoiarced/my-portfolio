@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import test from "node:test";
-import { html, panel, css } from "./site-fixture.mjs";
+import { html, panel, css } from "./site-fixture.ts";
 
 test("preserves the selected introduction and user-reviewed title and location", () => {
   const about = panel("about");

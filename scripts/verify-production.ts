@@ -1,4 +1,4 @@
-import { findExternalLinks, verifyExternalLinks } from "./link-check.mjs";
+import { findExternalLinks, verifyExternalLinks } from "./link-check.ts";
 
 const publicUrl = "https://ricardoiarced.github.io/my-portfolio/";
 const response = await fetch(publicUrl);

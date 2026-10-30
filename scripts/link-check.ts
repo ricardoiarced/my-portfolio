@@ -1,8 +1,8 @@
-export function findExternalLinks(html) {
+export function findExternalLinks(html: string): Set<string> {
   return new Set([...html.matchAll(/<a\b[^>]+href="(https?:\/\/[^"]+)"/g)].map(([, url]) => url));
 }
 
-export async function verifyExternalLinks(urls) {
+export async function verifyExternalLinks(urls: Iterable<string>): Promise<void> {
   for (const url of urls) {
     let response = await fetch(url, { method: "HEAD", redirect: "follow" });
     if (response.status === 405) {

@@ -1,12 +1,12 @@
 import { createReadStream } from "node:fs";
 import { stat } from "node:fs/promises";
-import { createServer } from "node:http";
+import { createServer, type Server } from "node:http";
 import { extname, resolve, sep } from "node:path";
 import { fileURLToPath, pathToFileURL } from "node:url";
 
 const root = resolve(fileURLToPath(new URL("../dist", import.meta.url)));
 const basePath = "/my-portfolio/";
-const mimeTypes = {
+const mimeTypes: Record<string, string> = {
   ".css": "text/css; charset=utf-8",
   ".html": "text/html; charset=utf-8",
   ".ico": "image/x-icon",
@@ -21,9 +21,9 @@ const mimeTypes = {
   ".woff2": "font/woff2",
 };
 
-export function startStaticServer(port = 4173) {
+export function startStaticServer(port = 4173): Promise<Server> {
   const server = createServer(async (request, response) => {
-    const pathname = decodeURIComponent(new URL(request.url, `http://${request.headers.host}`).pathname);
+    const pathname = decodeURIComponent(new URL(request.url ?? "/", `http://${request.headers.host}`).pathname);
     if (pathname === "/my-portfolio") {
       response.writeHead(308, { location: basePath });
       response.end();
@@ -60,7 +60,7 @@ export function startStaticServer(port = 4173) {
   });
 }
 
-if (import.meta.url === pathToFileURL(process.argv[1]).href) {
+if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {
   const port = Number.parseInt(process.env.PORT ?? "4173", 10);
   await startStaticServer(port);
   console.log(`Portfolio available at http://127.0.0.1:${port}${basePath}`);
