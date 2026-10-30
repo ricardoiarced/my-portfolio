@@ -2,7 +2,7 @@
 import { experience } from "../../data/portfolio";
 const { base } = Astro.props;
 ---
-<div class="section-heading"><h2>Experience</h2><a class="micro subtle-link" href={`${base}assets/CV_ARCE_DIAZ_RICARDO_IRVIN.pdf`} download>Résumé <span aria-hidden="true">↓</span></a></div>
+<div class="section-heading"><h2>Experience</h2><a class="micro subtle-link" href={`${base}assets/ricardo-arce-resume.pdf`} download>Résumé <span aria-hidden="true">↓</span></a></div>
 {experience.map(job => <article class="quiet-job">
   <div class="quiet-job-period"><p class="micro job-dates">{job.dates}</p><p class="micro job-location">{job.location}</p></div>
   <div>

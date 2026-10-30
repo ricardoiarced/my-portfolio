@@ -1,6 +1,13 @@
 // Reviewed portfolio copy; historical titles and delivery status are intentional.
 export const projects = [
   {
+    title: "Software Factory",
+    description: "Building a system that starts coding-agent sessions from issues, schedules, and development events, with human review at defined checkpoints.",
+    stack: "Python · Codex CLI · Claude Code · Git",
+    slug: "software-factory",
+    url: "https://github.com/ricardoiarced/software-factory",
+  },
+  {
     title: "Personal Finance Tracker",
     shortTitle: "Personal Finance",
     description: "Cash flow, budgets, and savings. A clearer picture of your money, in one private workspace.",
@@ -11,30 +18,6 @@ export const projects = [
     alt: "Personal Finance dashboard with account balances and financial activity",
     width: 1400,
     height: 733,
-  },
-  {
-    title: "Local Notes",
-    shortTitle: "Local Notes",
-    description: "A focused desktop editor for Markdown. Your notes stay in ordinary files, right where they belong.",
-    stack: "Electron · TypeScript · CodeMirror",
-    category: "Desktop application",
-    slug: "local-notes",
-    image: "local-notes.webp",
-    alt: "Local Notes Markdown editor with a folder tree and source editing pane",
-    width: 1040,
-    height: 600,
-  },
-  {
-    title: "Pomodoro Timer",
-    shortTitle: "Pomodoro Timer",
-    description: "A little structure for focused work. Custom sessions, thoughtful breaks, and a timer you can trust.",
-    stack: "React · TypeScript · Web Audio API",
-    category: "Web application",
-    slug: "pomodoro-timer",
-    image: "pomodoro-timer.webp",
-    alt: "Pomodoro Timer interface with a session countdown and timer controls",
-    width: 1200,
-    height: 800,
   },
 ];
 

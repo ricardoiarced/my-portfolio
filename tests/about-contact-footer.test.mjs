@@ -15,8 +15,8 @@ test("offers the reviewed opportunity statement and direct contact without a for
 });
 
 test("links to a real downloadable résumé from Experience", async () => {
-  assert.match(panel("experience"), /href="\/my-portfolio\/assets\/CV_ARCE_DIAZ_RICARDO_IRVIN\.pdf" download/);
-  const pdf = await readFile(new URL("../dist/assets/CV_ARCE_DIAZ_RICARDO_IRVIN.pdf", import.meta.url));
+  assert.match(panel("experience"), /href="\/my-portfolio\/assets\/ricardo-arce-resume\.pdf" download/);
+  const pdf = await readFile(new URL("../dist/assets/ricardo-arce-resume.pdf", import.meta.url));
   assert.equal(pdf.subarray(0, 4).toString(), "%PDF");
   assert.doesNotMatch(html, /<footer\b/);
 });

@@ -13,13 +13,11 @@ html, body { margin: 0; min-height: 100%; }
 html.lateral-enabled { height: 100%; overflow: hidden; }
 .lateral-enabled body { height: 100vh; height: 100dvh; display: flex; flex-direction: column; overflow: hidden; }
 .lateral-enabled .viewport { flex: 1 1 0; min-height: 0; overflow: hidden; overflow: clip; overscroll-behavior-x: contain; }
-.lateral-enabled .track { display: flex; width: 100%; height: 100%; transform: translateX(calc(var(--index) * -100%)); }
-.lateral-enabled .panel { flex: 0 0 100%; min-width: 0; height: 100%; display: flex; flex-direction: column; overflow-x: hidden; overflow-y: auto; overscroll-behavior: contain; scrollbar-gutter: stable both-edges; }
+.lateral-enabled .panel-stack { position: relative; isolation: isolate; width: 100%; height: 100%; }
+.lateral-enabled .panel { position: absolute; inset: 0; min-width: 0; height: 100%; display: flex; flex-direction: column; background: var(--bg); transform: translateX(calc((var(--panel-index) - var(--index)) * 100%)); overflow-x: hidden; overflow-y: auto; overscroll-behavior: contain; scrollbar-gutter: stable both-edges; }
 .lateral-enabled .panel-inner { margin: auto; flex-shrink: 0; }
 .lateral-enabled .nav-indicator { display: block; position: absolute; left: 0; bottom: 0; width: calc(100% / var(--count)); height: 1px; background: var(--accent); transform: translateX(calc(var(--index) * 100%)); }
-.is-ready .track, .is-ready .nav-indicator { transition: transform var(--speed) var(--ease); }
-.is-ready .panel-inner { transition: opacity var(--speed) ease, transform var(--speed) ease; }
-.is-ready .panel:not(.is-active) .panel-inner { opacity: .25; transform: scale(.97); }
+.is-ready .nav-indicator { transition: transform var(--speed) var(--ease); }
 
 @media (max-width: 800px) {
   .quiet-header { width: calc(100% - 64px); }
@@ -34,12 +32,12 @@ html.lateral-enabled { height: 100%; overflow: hidden; }
   .site-nav { width: min(340px, 82%); }
   .site-nav a { font-size: 11px; padding-inline: 3px; }
   .lateral-enabled .viewport { overflow: visible; }
-  .lateral-enabled .track { display: block; height: auto; transform: none; transition: none; }
-  .lateral-enabled .panel { display: block; height: auto; overflow: visible; }
-  .lateral-enabled .panel-inner, .is-ready .panel:not(.is-active) .panel-inner { margin-inline: auto; opacity: 1; transform: none; transition: none; }
+  .lateral-enabled .panel-stack { height: auto; }
+  .lateral-enabled .panel { position: static; display: block; height: auto; overflow: visible; transform: none; }
+  .lateral-enabled .panel-inner { margin-inline: auto; }
   .panel-inner { padding: 44px 20px; }
   #about .panel-inner { padding-block: 65px 55px; }
 }
 @media (prefers-reduced-motion: reduce) {
-  .is-ready .track, .is-ready .nav-indicator, .is-ready .panel-inner { transition: none; }
+  .is-ready .nav-indicator { transition: none; }
 }

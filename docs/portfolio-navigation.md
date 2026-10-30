@@ -23,8 +23,16 @@ then `npm run preview`. The site base is `/my-portfolio/`.
 `src/data/sections.ts` owns section order and labels. Astro renders all panels
 into the initial HTML, with the About introduction first. On desktop the body
 fills `100dvh`, the header remains outside the moving viewport, and each panel
-owns its vertical scrolling. The track and menu underline share the 800ms
-`cubic-bezier(0.77, 0, 0.175, 1)` transition.
+owns its vertical scrolling. Panels occupy the same absolute-positioned stack,
+rather than a horizontal row. Cover/push brings the incoming panel above the
+outgoing panel from the direction of navigation. The outgoing panel retreats
+12%, scales to 94%, and darkens to 65% brightness. Both panels and the menu
+underline use 800ms with `cubic-bezier(0.77, 0, 0.175, 1)`.
+
+Panel transforms and brightness animate through the Web Animations API.
+Completion removes animation layers; rapid navigation cancels the previous
+transition and starts from the currently visible panel's transform. Resizing
+into the phone layout or enabling reduced motion cancels ongoing motion.
 
 Plain hash links work as deep links and retain modified-click behavior.
 Navigation updates history, the active menu link, focus, and inactive-panel
@@ -41,6 +49,10 @@ The source résumé project supplied for the previous experience rewrite remains
 read-only. Historical titles, locations, team attribution, and delivery statuses
 are preserved in `src/data/portfolio.ts`.
 
+The downloadable PDF is an unchanged copy of the résumé project's
+`resumes/resume-se.pdf` (Software Engineer), served as
+`assets/ricardo-arce-resume.pdf` so the download uses Ricardo's chosen filename.
+
 ## Validation
 
 The built preview was checked in the in-app browser at desktop and tablet
@@ -51,8 +63,15 @@ return links, skip-link focus, inactive-panel accessibility, and independent
 Experience scrolling were exercised. The browser viewport override was reset.
 
 Astro type checking, the production build, static Node tests, and JavaScript
-syntax checks pass. The updated 12-test Playwright suite collects successfully;
+syntax checks pass. The updated 13-test Playwright suite collects successfully;
 it was not executed because browser interaction in this session uses the
 in-app browser. Reduced-motion and JavaScript-disabled fallbacks are covered
 in source and the suite, but were not runtime-emulated here. A real screen
 reader, physical trackpad, and Lighthouse audit remain release checks.
+
+Cover/push was checked against the production build: the incoming panel has
+the higher layer while the outgoing panel scales and darkens; completed and
+interrupted transitions release their temporary layers. Back navigation,
+independent Experience scrolling, and the 390px vertical fallback were checked
+again. The served résumé was byte-compared with the Software Engineer source
+PDF and matches exactly.

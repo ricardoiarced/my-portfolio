@@ -94,12 +94,12 @@ astro-dev-toolbar { display: none; }
 .quiet-job .job-dates { padding-top: 4px; }
 .quiet-job h3 { font-size: 16px; font-weight: 450; letter-spacing: -.015em; }
 .quiet-job .job-description { margin-top: 13px; max-width: 540px; }
-.quiet-contact { padding-top: 32px; border-top: 1px solid var(--line); margin: 0; }
-.quiet-contact h2 { font-size: 11px; }
-.contact-title { display: flex; align-items: center; justify-content: space-between; font-size: 58px; font-weight: 450; letter-spacing: -.06em; margin-block: 14px 35px; line-height: 1.25; }
-.contact-title span { font-size: 42px; color: var(--accent); }
-.contact-title:hover { color: var(--accent); }
-.quiet-contact-bottom { display: flex; flex-wrap: wrap; gap: 20px; justify-content: space-between; align-items: baseline; }
+.quiet-contact { margin: 0; text-align: left; }
+.contact-label { text-transform: uppercase; letter-spacing: .12em; }
+.contact-title { font-size: 58px; font-weight: 450; letter-spacing: -.06em; margin-block: 16px 18px; line-height: 1.25; }
+.contact-availability { color: var(--muted); font-size: 18px; }
+.quiet-contact-bottom { display: flex; flex-direction: column; gap: 30px; align-items: flex-start; margin-top: 32px; }
+.quiet-contact .email-link { font-size: clamp(24px, 4vw, 40px); line-height: 1.4; letter-spacing: -.04em; text-decoration: underline; text-decoration-thickness: 1px; text-decoration-color: var(--accent); text-underline-offset: 8px; }
 .quiet-contact-bottom .social-links { font-size: 13px; }
 
 @media (max-width: 520px) {
@@ -119,8 +119,8 @@ astro-dev-toolbar { display: none; }
   .quiet-job-period { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 4px 15px; }
   .quiet-job-period .job-location { margin-top: 0; }
   .experience-highlights { font-size: 12px; }
-  .contact-title { font-size: 48px; margin-bottom: 25px; }
-  .quiet-contact-bottom { gap: 14px; }
+  .contact-title { font-size: 48px; }
+  .contact-availability { font-size: 16px; }
 }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { transition: none !important; }

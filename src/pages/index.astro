@@ -19,10 +19,10 @@ const components = { about: About, experience: Experience, projects: Projects, c
     </div>
   </header>
   <main id="main-content" class="viewport" tabindex="-1">
-    <div class="track">
-      {sections.map(section => {
+    <div class="panel-stack">
+      {sections.map((section, index) => {
         const Content = components[section.id];
-        return <Panel id={section.id} label={section.label}><Content base={base} /></Panel>;
+        return <Panel id={section.id} label={section.label} index={index}><Content base={base} /></Panel>;
       })}
     </div>
   </main>
