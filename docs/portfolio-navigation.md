@@ -21,18 +21,21 @@ then `npm run preview`. The site base is `/my-portfolio/`.
 ## Behavior
 
 `src/data/sections.ts` owns section order and labels. Astro renders all panels
-into the initial HTML, with the About introduction first. On desktop the body
+into the initial HTML, with the About introduction first. At every width the body
 fills `100dvh`, the header remains outside the moving viewport, and each panel
-owns its vertical scrolling. Panels occupy the same absolute-positioned stack,
-rather than a horizontal row. Cover/push brings the incoming panel above the
-outgoing panel from the direction of navigation. The outgoing panel retreats
-12%, scales to 94%, and darkens to 65% brightness. Both panels and the menu
-underline use 800ms with `cubic-bezier(0.77, 0, 0.175, 1)`.
+owns its vertical scrolling. Panels occupy the same grid cell. Later panels
+keep the higher layer: forward navigation covers the earlier panel from the
+right, and back navigation moves the top panel right to reveal the earlier
+one. The covered panel retreats 25% and darkens to 60% brightness. Both panels
+and the menu underline use 650ms with `cubic-bezier(0.32, 0.72, 0, 1)`.
 
-Panel transforms and brightness animate through the Web Animations API.
-Completion removes animation layers; rapid navigation cancels the previous
-transition and starts from the currently visible panel's transform. Resizing
-into the phone layout or enabling reduced motion cancels ongoing motion.
+CSS drives panel transforms, brightness, and edge shadows from `--index` and
+each panel's `--panel-index`. During a jump, all panels except the leaving and
+arriving panels are hidden and move immediately into place. A timer releases
+those hidden panels after the transition, accepting both `ms` and minified `s`
+units from `--speed`. Rapid navigation replaces that timer, and CSS retargets
+the transitions. Reduced motion disables panel and underline transitions,
+including when the preference changes during navigation.
 
 Plain hash links work as deep links and retain modified-click behavior.
 Navigation updates history, the active menu link, focus, and inactive-panel
@@ -40,10 +43,11 @@ Navigation updates history, the active menu link, focus, and inactive-panel
 are enabled. Reduced motion disables the transitions. Arrow keys retain their
 native behavior; optional global arrow-key navigation is not enabled.
 
-Below 641px the sections stack, the header is sticky, and all panels remain
-available to keyboard and assistive technology. At the breakpoint, switching
-layout preserves the selected panel. Without JavaScript the page is also a
-readable vertical portfolio.
+Phone navigation uses the same cover/push effect and inactive-panel inertness
+as desktop. Menu targets remain at least 44px tall, and tall panels scroll
+internally. This replaces the previous vertical fallback below 641px, as
+recorded in ADR 0002. Navigation uses taps and links; swipe gestures are not
+implemented. Without JavaScript all four panels remain readable vertically.
 
 The source résumé project supplied for the previous experience rewrite remains
 read-only. Historical titles, locations, team attribution, and delivery statuses
@@ -55,23 +59,17 @@ The downloadable PDF is an unchanged copy of the résumé project's
 
 ## Validation
 
-The built preview was checked in the in-app browser at desktop and tablet
-widths of 768, 1077, 1280, and 1600px, and phone sizes of 360×800, 390×844,
-and 640×360. No horizontal overflow was observed. Menu navigation, Contact
-CTA, direct and legacy hashes, Back/Forward, modified-click opening, case-study
-return links, skip-link focus, inactive-panel accessibility, and independent
-Experience scrolling were exercised. The browser viewport override was reset.
+`npm run test:browser` exercises the production build in Chromium, including
+iPhone 13 touch emulation. It covers forward/back layering, synchronized menu
+motion, jumps, rapid navigation, menu/brand/Contact taps, history, direct and
+legacy hashes, early deep-link positioning before the navigation module loads,
+keyboard focus and inertness, reduced motion, case-study return links, and
+the JavaScript-disabled fallback. Layout checks run at 1600, 1280, 768, 390,
+and 640px, including short landscape screens, internal scrolling and 44px
+menu targets. An additional WebKit run was attempted, but its browser
+installation stalled and remained incomplete; Safari engine coverage is
+unverified.
 
-Astro type checking, the production build, static Node tests, and JavaScript
-syntax checks pass. The updated 13-test Playwright suite collects successfully;
-it was not executed because browser interaction in this session uses the
-in-app browser. Reduced-motion and JavaScript-disabled fallbacks are covered
-in source and the suite, but were not runtime-emulated here. A real screen
-reader, physical trackpad, and Lighthouse audit remain release checks.
-
-Cover/push was checked against the production build: the incoming panel has
-the higher layer while the outgoing panel scales and darkens; completed and
-interrupted transitions release their temporary layers. Back navigation,
-independent Experience scrolling, and the 390px vertical fallback were checked
-again. The served résumé was byte-compared with the Software Engineer source
-PDF and matches exactly.
+Physical iOS Safari and Android Chrome, a real screen reader, and low-end phone
+animation performance still need manual verification. The downloadable résumé
+and case-study content are unchanged by the navigation update.
