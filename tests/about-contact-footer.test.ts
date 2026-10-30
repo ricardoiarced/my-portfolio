@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
 import test from "node:test";
-import { html, panel } from "./site-fixture.mjs";
+import { html, panel } from "./site-fixture.ts";
 
 test("offers the reviewed opportunity statement and direct contact without a form", () => {
   const contact = panel("contact");

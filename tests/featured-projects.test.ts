@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import test from "node:test";
-import { panel } from "./site-fixture.mjs";
+import { panel } from "./site-fixture.ts";
 
 test("shows Software Factory first and Personal Finance Tracker second", () => {
   const projects = panel("projects");

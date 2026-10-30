@@ -2,7 +2,7 @@ import { defineConfig } from "@playwright/test";
 
 export default defineConfig({
   testDir: "./tests",
-  testMatch: "release-browser.spec.mjs",
+  testMatch: "release-browser.spec.ts",
   fullyParallel: true,
   reporter: "line",
   use: {
@@ -11,7 +11,7 @@ export default defineConfig({
     trace: "retain-on-failure",
   },
   webServer: {
-    command: "node scripts/static-server.mjs",
+    command: "node scripts/static-server.ts",
     url: "http://127.0.0.1:4173/my-portfolio/",
     reuseExistingServer: false,
   },

@@ -1,6 +1,10 @@
 # Release checks
 
-Run `npm run release:check` before publishing from the repository root. It runs the static contract suite, JavaScript syntax checks, public external-link checks, Chromium checks at 1280x800, 768x1024, and 390x844, and Lighthouse audits with minimum scores of 90 performance and 95 for accessibility, best practices, and SEO. LinkedIn returns its non-standard `999` status to automated clients; the check reports that response as bot protection while the exact public profile URL remains covered by the static and browser checks.
+Use Node.js 22.18+ or 24+ (`mise install` installs the configured Node.js 22 release). Scripts and Node tests run TypeScript directly using Node's built-in type stripping; no separate script runner is needed. Astro components remain `.astro` files.
+
+Run `npm run release:check` before publishing from the repository root. It runs strict type checks, the Astro build, the static contract suite, public external-link checks, Chromium checks at 1280x800, 768x1024, and 390x844, and Lighthouse audits with minimum scores of 90 performance and 95 for accessibility, best practices, and SEO. LinkedIn returns its non-standard `999` status to automated clients; the check reports that response as bot protection while the exact public profile URL remains covered by the static and browser checks.
+
+`npm run check` checks Astro components and application TypeScript, then checks scripts, tests, and configuration with Node module resolution. Both TypeScript configurations disable JavaScript inputs and require erasable syntax compatible with native type stripping. Node modules use explicit `.ts` extensions for local imports. `npm run check:astro` remains available for checking only the Astro/application side.
 
 After GitHub Pages reports a successful deployment, run `npm run verify:production`. This checks the HTTPS `/my-portfolio/` page, its canonical URL, and every deployed local asset.
 

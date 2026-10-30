@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import test from "node:test";
-import { panel } from "./site-fixture.mjs";
+import { panel } from "./site-fixture.ts";
 
 const experience = panel("experience");
 test("preserves chronology, actual job locations, and delivery status", () => {
