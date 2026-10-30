@@ -1,0 +1,43 @@
+:root { --count: 4; --index: 0; --speed: 800ms; --ease: cubic-bezier(0.77, 0, 0.175, 1); --header-height: 88px; }
+html, body { margin: 0; min-height: 100%; }
+.site-header { flex: none; z-index: 10; background: var(--bg); }
+.quiet-header { width: min(840px, calc(100% - 96px)); margin-inline: auto; display: flex; justify-content: space-between; align-items: center; gap: 28px; padding-block: 22px; }
+.site-nav { position: relative; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); width: min(390px, 75%); }
+.site-nav a { display: flex; align-items: center; justify-content: center; min-height: 44px; padding: 0 8px; color: var(--muted); font-size: 13px; white-space: nowrap; }
+.site-nav a:hover, .site-nav a[aria-current="page"] { color: var(--text); }
+.nav-indicator { display: none; }
+.panel { scroll-margin-top: calc(var(--header-height) + 16px); }
+.panel-inner { width: 100%; max-width: 936px; margin-inline: auto; padding: 48px; }
+
+/* Without JavaScript, all four panels are ordinary readable sections. */
+html.lateral-enabled { height: 100%; overflow: hidden; }
+.lateral-enabled body { height: 100vh; height: 100dvh; display: flex; flex-direction: column; overflow: hidden; }
+.lateral-enabled .viewport { flex: 1 1 0; min-height: 0; overflow: hidden; overflow: clip; overscroll-behavior-x: contain; }
+.lateral-enabled .panel-stack { position: relative; isolation: isolate; width: 100%; height: 100%; }
+.lateral-enabled .panel { position: absolute; inset: 0; min-width: 0; height: 100%; display: flex; flex-direction: column; background: var(--bg); transform: translateX(calc((var(--panel-index) - var(--index)) * 100%)); overflow-x: hidden; overflow-y: auto; overscroll-behavior: contain; scrollbar-gutter: stable both-edges; }
+.lateral-enabled .panel-inner { margin: auto; flex-shrink: 0; }
+.lateral-enabled .nav-indicator { display: block; position: absolute; left: 0; bottom: 0; width: calc(100% / var(--count)); height: 1px; background: var(--accent); transform: translateX(calc(var(--index) * 100%)); }
+.is-ready .nav-indicator { transition: transform var(--speed) var(--ease); }
+
+@media (max-width: 800px) {
+  .quiet-header { width: calc(100% - 64px); }
+  .panel-inner { padding: 40px 32px; }
+}
+@media (max-width: 640px) {
+  :root { --header-height: 72px; }
+  html.lateral-enabled { height: auto; overflow: visible; }
+  .lateral-enabled body { height: auto; min-height: 100dvh; display: block; overflow: visible; }
+  .site-header { position: sticky; top: 0; border-bottom: 1px solid var(--line); }
+  .quiet-header { width: calc(100% - 40px); gap: 18px; padding-block: 14px; }
+  .site-nav { width: min(340px, 82%); }
+  .site-nav a { font-size: 11px; padding-inline: 3px; }
+  .lateral-enabled .viewport { overflow: visible; }
+  .lateral-enabled .panel-stack { height: auto; }
+  .lateral-enabled .panel { position: static; display: block; height: auto; overflow: visible; transform: none; }
+  .lateral-enabled .panel-inner { margin-inline: auto; }
+  .panel-inner { padding: 44px 20px; }
+  #about .panel-inner { padding-block: 65px 55px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .is-ready .nav-indicator { transition: none; }
+}

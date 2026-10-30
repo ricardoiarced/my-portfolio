@@ -1,12 +1,12 @@
 {
-  "name": "Ricardo Arce | Software Developer",
+  "name": "Ricardo Arce | Software Engineer",
   "short_name": "Ricardo Arce",
-  "description": "Ricardo Arce is a software developer focused on reliable, accessible, and maintainable web applications.",
+  "description": "Ricardo Arce is a software engineer focused on reliable, accessible, and maintainable web applications.",
   "start_url": "/my-portfolio/",
   "scope": "/my-portfolio/",
   "display": "standalone",
-  "background_color": "#101417",
-  "theme_color": "#101417",
+  "background_color": "#0d0f10",
+  "theme_color": "#0d0f10",
   "icons": [
     {
       "src": "img/icon-192.png",

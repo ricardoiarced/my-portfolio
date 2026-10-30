@@ -1,52 +1,19 @@
 import assert from "node:assert/strict";
-import { readFile } from "node:fs/promises";
 import test from "node:test";
+import { panel } from "./site-fixture.mjs";
 
-const html = await readFile(new URL("../dist/index.html", import.meta.url), "utf8");
-const featuredProjects = html.match(
-  /<section class="document__section" id="featured-projects"[\s\S]*?<\/section>\s*<section class="document__section" id="experience"/,
-)?.[0];
-
-test("presents exactly three projects as concise, linked entries", () => {
-  assert.ok(featuredProjects, "Work section should exist before Experience");
-
-  const projects = [...featuredProjects.matchAll(/<article class="project"[\s\S]*?<\/article>/g)].map(([entry]) => entry);
-  assert.equal(projects.length, 3);
-
-  const expected = [
-    {
-      number: "[01]",
-      title: "Personal Finance Tracker",
-      technologies: "Next.js · TypeScript · Tailwind · PostgreSQL",
-      destination: "/my-portfolio/projects/personal-finance.html",
-    },
-    {
-      number: "[02]",
-      title: "Local Notes",
-      technologies: "Electron · TypeScript · CodeMirror · Node.js",
-      destination: "/my-portfolio/projects/local-notes.html",
-    },
-    {
-      number: "[03]",
-      title: "Pomodoro Timer",
-      technologies: "React · TypeScript · Vite · Web Audio API",
-      destination: "/my-portfolio/projects/pomodoro-timer.html",
-    },
-  ];
-
-  for (const [index, expectations] of expected.entries()) {
-    const escapedNumber = expectations.number.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
-    assert.match(projects[index], new RegExp(`class="project__number"[^>]*>${escapedNumber}<`));
-    assert.match(projects[index], new RegExp(`<h2 class="project__title">${expectations.title}<\\/h2>`));
-    assert.match(projects[index], new RegExp(`class="project__stack"[^>]*>${expectations.technologies}<\\/p>`));
-    const escapedDestination = expectations.destination.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
-    assert.match(projects[index], new RegExp(`class="project__link" href="${escapedDestination}"`));
-    assert.match(projects[index], /class="project__description"[\s\S]*?<\/p>/);
+test("shows Software Factory first and Personal Finance Tracker second", () => {
+  const projects = panel("projects");
+  const links = [...projects.matchAll(/<a class="quiet-project"[^>]*>[\s\S]*?<\/a>/g)].map(([link]) => link);
+  assert.equal(links.length, 2);
+  for (const [index, [title, destination]] of [
+    ["Software Factory", "https://github.com/ricardoiarced/software-factory"],
+    ["Personal Finance Tracker", "/my-portfolio/projects/personal-finance.html"],
+  ].entries()) {
+    assert.ok(links[index].includes(title));
+    assert.ok(links[index].includes(`href="${destination}"`));
+    assert.match(links[index], /class="stack"/);
   }
-});
-
-test("keeps the homepage work list free of imagery and cards", () => {
-  assert.ok(featuredProjects, "Work section should exist");
-  assert.doesNotMatch(featuredProjects, /<img\b|<picture\b|<figure\b/);
-  assert.doesNotMatch(featuredProjects, /project-card|card|shadow|border-radius/i);
+  assert.doesNotMatch(projects, /<img\b|<picture\b|<figure\b/);
+  assert.doesNotMatch(projects, /Local Notes|Pomodoro Timer/);
 });

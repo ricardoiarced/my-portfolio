@@ -1,3 +1,7 @@
+---
+status: superseded by ADR-0002
+---
+
 # ADR 0001 — The homepage is a Document, not a page shell
 
 The homepage was prototyped as three radically different minimal designs (a dark man-page "Document", a one-screen index, and a light editorial hairlines layout), chosen via `?variant=` param. All three preserve the same content — projects, experience (three roles), skills, about, contact — but one won.

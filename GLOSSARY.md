@@ -1,37 +1,34 @@
-# Portfolio Document
+# Portfolio
 
-The design language and content conventions of the portfolio homepage — a single-scroll "document" page (dark paper, monospace type, hairlines, no header/footer chrome) presenting work, experience, skills, about, and contact.
+Ricardo Arce's public presentation of his software engineering work, professional
+experience, projects, and contact details.
 
 ## Language
 
-**Document**:
-The homepage itself, as a single scrollable page in a print/manual format: dark background, monospace type, hairline rules, no header, footer, or side chrome.
-_Avoid_: man page, terminal page
+**Panel**:
+One of the portfolio's four sections: About, Experience, Projects, or Contact.
+_Avoid_: slide, Document
+
+**Introduction**:
+The name, professional role, current home city, and positioning statement that
+open the About panel.
+_Avoid_: current-employer summary
 
 **Role line**:
-The line under the Document title stating current role, company, and location (e.g., "Junior ERP Developer — Villa Group Resorts & Spas — Puerto Vallarta, Jalisco").
-_Avoid_: hero, tagline, subtitle
+The short introduction line identifying Ricardo as a software engineer based in
+Hermosillo, distinct from the locations of historical jobs.
+_Avoid_: employment title
 
-**Make-good line**:
-The one-sentence positioning statement below the Role line ("I build reliable web experiences that make complex work feel simple.").
-_Avoid_: hero text
+**Project entry**:
+A personal project's title, short description, technologies, and link to its
+case study.
+_Avoid_: work-experience entry
 
-**Section marker**:
-The uppercase, dim label that opens a section (Work, Experience, Skills, About, Contact).
-_Avoid_: heading, eyebrow
+**Contribution**:
+Specific work Ricardo implemented or changed during a role, including its actual
+delivery status and supported scope.
+_Avoid_: whole-project ownership
 
-**Entry**:
-One item within a section — a project entry, a job entry, or a skill entry.
-
-**Index number**:
-The bracketed ordinal ([01], [02]) on project entries; document-style numbering kept from the man-page concept after the shell jokes were dropped.
-_Avoid_: badge, tag
-
-**Trail link**:
-The quiet "→" link at the end of a project entry pointing at its case-study page.
-
-**Hrule**:
-The hairline divider between document sections.
-
-**Bullet**:
-A single-line achievement inside a job entry.
+**Case study**:
+A project's separate page explaining its problem, solution, and implementation.
+_Avoid_: panel

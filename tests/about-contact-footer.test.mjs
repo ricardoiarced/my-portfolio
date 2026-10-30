@@ -1,35 +1,22 @@
 import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
 import test from "node:test";
+import { html, panel } from "./site-fixture.mjs";
 
-const html = await readFile(new URL("../dist/index.html", import.meta.url), "utf8");
-
-test("introduces Ricardo with a concise About narrative without header/footer chrome", () => {
-  const about = html.match(/<section class="document__section" id="about"[\s\S]*?<\/section>/)?.[0];
-
-  assert.ok(about, "About section should exist");
-  assert.match(about, /<p class="document__marker" id="about-title">About<\/p>/);
-
-  const paragraphs = [...about.matchAll(/<p(?:\s[^>]*)?>([^<]+)<\/p>/g)];
-  assert.ok(paragraphs.length >= 2 && paragraphs.length <= 3, "About should be concise");
-  assert.match(about, /Odoo ecosystem/);
-  assert.doesNotMatch(about, /mechatronics/i);
+test("offers the reviewed opportunity statement and direct contact without a form", () => {
+  const contact = panel("contact");
+  assert.match(contact, /Open to new opportunities/);
+  assert.match(contact, /Let’s talk/);
+  assert.match(contact, /href="mailto:ricardoiarced@gmail\.com"/);
+  for (const domain of ["https://github.com/ricardoiarced", "https://www.linkedin.com/in/ricardo-irvin-arce-diaz/"]) {
+    assert.ok(contact.includes(`href="${domain}" target="_blank" rel="noopener noreferrer"`));
+  }
+  assert.doesNotMatch(contact, /<form\b/);
 });
 
-test("offers direct contact and a downloadable resume without a form", async () => {
-  const contact = html.match(/<section class="document__section" id="contact"[\s\S]*?<\/section>/)?.[0];
-
-  assert.ok(contact, "Contact section should exist");
-  assert.match(contact, /<p class="document__marker" id="contact-title">Contact<\/p>/);
-  assert.match(contact, /class="document__status">Available for new opportunities<\/p>/);
-  assert.match(contact, /href="mailto:ricardoiarced@gmail\.com"/);
-  assert.match(contact, /href="https:\/\/www\.linkedin\.com\/in\/ricardo-irvin-arce-diaz\/"[^>]+target="_blank"[^>]+rel="noopener noreferrer"/);
-  assert.match(contact, /href="https:\/\/github\.com\/ricardoiarced"[^>]+target="_blank"[^>]+rel="noopener noreferrer"/);
-  assert.match(contact, /href="assets\/CV_ARCE_DIAZ_RICARDO_IRVIN\.pdf"[^>]+download/);
-  assert.doesNotMatch(contact, /<form\b/i);
-
-  const resume = await readFile(
-    new URL("../dist/assets/CV_ARCE_DIAZ_RICARDO_IRVIN.pdf", import.meta.url),
-  );
-  assert.equal(resume.subarray(0, 4).toString(), "%PDF");
+test("links to a real downloadable résumé from Experience", async () => {
+  assert.match(panel("experience"), /href="\/my-portfolio\/assets\/ricardo-arce-resume\.pdf" download/);
+  const pdf = await readFile(new URL("../dist/assets/ricardo-arce-resume.pdf", import.meta.url));
+  assert.equal(pdf.subarray(0, 4).toString(), "%PDF");
+  assert.doesNotMatch(html, /<footer\b/);
 });
