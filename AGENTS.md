@@ -1,5 +1,9 @@
 ## Agent skills
 
+### Pull requests
+
+Before creating a pull request or updating its description, use the `pr` skill.
+
 ### Issue tracker
 
 Issues and PRDs are tracked in this repository's GitHub Issues. See `docs/agents/issue-tracker.md`.

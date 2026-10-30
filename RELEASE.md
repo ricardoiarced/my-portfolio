@@ -21,4 +21,6 @@ The site uses no form, tracking script, remote font request, icon library, SMTP 
 
 ## GitHub Pages
 
-The production site is built from `master` by `.github/workflows/deploy.yml` and published from Astro's `dist/` output. In GitHub Pages settings, select **GitHub Actions** as the build and deployment source. The public URL is `https://ricardoiarced.github.io/my-portfolio/`, and GitHub Pages must keep HTTPS enforcement enabled.
+The `.github/workflows/deploy.yml` workflow runs `npm run release:check` on pull requests targeting `master`, pushes to `master`, and manual runs. It installs Node.js 22 and Chromium with its system dependencies before validation. All release checks must pass before the build and deployment jobs can run. Pull requests and manual runs on other branches validate without publishing; pushes and manual runs on `master` publish Astro's `dist/` output. Only the deployment job receives Pages and OIDC write permissions.
+
+In GitHub Pages settings, select **GitHub Actions** as the build and deployment source. The public URL is `https://ricardoiarced.github.io/my-portfolio/`, and GitHub Pages must keep HTTPS enforcement enabled.
