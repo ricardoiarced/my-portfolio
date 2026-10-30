@@ -6,15 +6,18 @@ After GitHub Pages reports a successful deployment, run `npm run verify:producti
 
 ## Accessibility review
 
+The homepage follows [ADR 0002](docs/adr/0002-quiet-index-with-lateral-navigation.md) and the [portfolio navigation guide](docs/portfolio-navigation.md).
+
 The release check and source review cover:
 
-- A skip link, one `main` landmark, labeled primary navigation, and a footer landmark on the case-study pages (the homepage Document deliberately ships without nav or footer chrome, per ADR 0001).
+- A skip link and one `main` landmark per page, labeled homepage section navigation, and labeled primary navigation plus a footer landmark on the case-study pages.
 - One `h1` per page and a heading hierarchy without skipped levels.
 - Descriptive alternatives and intrinsic dimensions for every content image.
-- Visible `:focus-visible` treatment and keyboard access to the always-visible responsive navigation.
+- Visible `:focus-visible` treatment, keyboard access to the always-visible navigation, active-panel focus, and inactive-panel `inert` state.
+- Homepage cover/push navigation at every width with internally scrollable panels; without JavaScript, all panels remain readable vertically.
 - Text labels for navigation, contact, resume, and external-profile actions.
 - Text and interactive colors with WCAG AA contrast against their backgrounds.
-- `prefers-reduced-motion` disabling smooth scrolling and transitions.
+- `prefers-reduced-motion` disabling transitions, including panel and menu motion.
 - No horizontal overflow at the representative desktop, tablet, and mobile viewports.
 
 The site uses no form, tracking script, remote font request, icon library, SMTP client, or other third-party runtime resource. Fraunces, Inter, and IBM Plex Mono are served from the repository. Private and unpublished project repositories are described as unavailable rather than linked.
