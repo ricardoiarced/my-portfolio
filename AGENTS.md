@@ -4,6 +4,10 @@
 
 Before creating a pull request or updating its description, use the `pr` skill.
 
+### Releases
+
+For release checks, publishing, and post-deployment verification, read `RELEASE.md`.
+
 ### Issue tracker
 
 Issues and PRDs are tracked in this repository's GitHub Issues. See `docs/agents/issue-tracker.md`.
