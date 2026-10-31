@@ -1,6 +1,12 @@
 # Release checks
 
-Use Node.js 22.18+ or 24+ (`mise install` installs the configured Node.js 22 release). Scripts and Node tests run TypeScript directly using Node's built-in type stripping; no separate script runner is needed. Astro components remain `.astro` files.
+Use Node.js 26.13.0 LTS (`mise install` installs the configured release; `mise exec -- npm run release:check` runs checks with it). The package engine accepts compatible Node.js 26 releases from 26.13.0 onward. Local tooling and both GitHub Actions validation and build jobs pin 26.13.0.
+
+Verified on October 30, 2026 against the official [release index](https://nodejs.org/dist/index.json) and [26.13.0 release notes](https://nodejs.org/en/blog/release/v26.13.0): Node.js 26.13.0 is the latest LTS release, named Lithium. Node.js 26 entered LTS on October 28, 2026 and is supported through April 2029; see the official [release schedule](https://github.com/nodejs/Release/blob/main/schedule.json). Official Linux binaries require `libatomic`, which may need to be installed separately on some distributions.
+
+Scripts and Node tests run TypeScript directly using Node's built-in type stripping; no separate script runner is needed. Astro components remain `.astro` files.
+
+Playwright is pinned to 1.60.0 for browser installation compatibility. Earlier releases can hang extracting downloaded Chromium archives on newer Node.js releases; see the [upstream report](https://github.com/microsoft/playwright/issues/41000). Install the matching browser with `npx playwright install chromium` (CI adds `--with-deps` for system libraries) after `npm ci`.
 
 Run `npm run release:check` before publishing from the repository root. It runs strict type checks, the Astro build, the static contract suite, public external-link checks, Chromium checks at 1280x800, 768x1024, and 390x844, and Lighthouse audits with minimum scores of 90 performance and 95 for accessibility, best practices, and SEO. LinkedIn returns its non-standard `999` status to automated clients; the check reports that response as bot protection while the exact public profile URL remains covered by the static and browser checks.
 
@@ -28,6 +34,6 @@ The site uses no form, tracking script, remote font request, icon library, SMTP 
 
 ## GitHub Pages
 
-The `.github/workflows/deploy.yml` workflow runs `npm run release:check` on pull requests targeting `master`, pushes to `master`, and manual runs. It installs Node.js 22 and Chromium with its system dependencies before validation. All release checks must pass before the build and deployment jobs can run. Pull requests and manual runs on other branches validate without publishing; pushes and manual runs on `master` publish Astro's `dist/` output. Only the deployment job receives Pages and OIDC write permissions.
+The `.github/workflows/deploy.yml` workflow runs `npm run release:check` on pull requests targeting `master`, pushes to `master`, and manual runs. It installs Node.js 26.13.0 and Chromium with its system dependencies before validation, and uses the same Node.js release for the Astro build. All release checks must pass before the build and deployment jobs can run. Pull requests and manual runs on other branches validate without publishing; pushes and manual runs on `master` publish Astro's `dist/` output. Only the deployment job receives Pages and OIDC write permissions.
 
 In GitHub Pages settings, select **GitHub Actions** as the build and deployment source. The public URL is `https://ricardoiarced.github.io/my-portfolio/`, and GitHub Pages must keep HTTPS enforcement enabled.
