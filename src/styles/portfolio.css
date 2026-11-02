@@ -1,13 +1,15 @@
 /* Selected quiet-index design. Layout and motion live in lateral.css. */
+/* public/ URLs carry the GitHub Pages base (astro.config.ts) so the dev
+   router and production resolve identically. */
 @font-face {
   font-family: Inter;
-  src: url("/fonts/inter-latin.woff2") format("woff2");
+  src: url("/my-portfolio/fonts/inter-latin.woff2") format("woff2");
   font-weight: 100 900;
   font-display: swap;
 }
 @font-face {
   font-family: "IBM Plex Mono";
-  src: url("/fonts/ibm-plex-mono-latin-regular.woff2") format("woff2");
+  src: url("/my-portfolio/fonts/ibm-plex-mono-latin-regular.woff2") format("woff2");
   font-weight: 400;
   font-display: swap;
 }
